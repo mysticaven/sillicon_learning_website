@@ -177,6 +177,17 @@ The platform is fully responsive:
 - High contrast ratios
 - Focus indicators
 
+## 👨‍💻 About the Author
+
+**Gowshik Ram R** - Hardware Engineering Enthusiast
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/gowshik-ram-r/)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-black?style=for-the-badge&logo=github)](https://github.com/mysticaven)
+
+💡 **Found this helpful?** Give it a ⭐ and follow me on GitHub for more awesome projects!
+
+---
+
 ## 🎉 Good Luck!
 
 **Good luck with the SRM IST-Kattankulathur 2025 Placement Season, Gowshik!** 🚀
