@@ -5,6 +5,11 @@ package-lock.json
 # Netlify
 .netlify/
 
+# Vite build output
+dist/
+dist-ssr/
+*.local
+
 # OS files
 .DS_Store
 Thumbs.db

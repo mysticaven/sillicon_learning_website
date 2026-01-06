@@ -4,8 +4,17 @@
   status = 200
 
 [build]
+  publish = "dist"
+  command = "npm run build"
   functions = "netlify/functions"
 
 [functions]
   # Enable Netlify Blobs
   included_files = ["netlify/functions/**"]
+
+[dev]
+  command = "npm run dev"
+  port = 3000
+  targetPort = 3000
+  framework = "#custom"
+

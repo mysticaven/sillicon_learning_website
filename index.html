@@ -796,11 +796,11 @@
                     <button class="accordion-btn">
                         <div class="question-content">
                             <span class="question-number">3</span>
-                            <span class="question-text">Blocking (=) vs Non-Blocking (<=) in Verilog</span>
-                                    <div class="question-tags">
-                                        <span class="tag">Verilog</span>
-                                        <span class="tag">RTL Coding</span>
-                                    </div>
+                            <span class="question-text">Blocking (=) vs Non-Blocking (&lt;=) in Verilog</span>
+                            <div class="question-tags">
+                                <span class="tag">Verilog</span>
+                                <span class="tag">RTL Coding</span>
+                            </div>
                         </div>
                         <div class="accordion-controls">
                             <label class="checkbox-container" onclick="event.stopPropagation()">
@@ -824,12 +824,12 @@
                                         </ul>
                                     </div>
                                     <div class="comparison-cell">
-                                        <strong>Non-blocking (<=)< /strong>
-                                                <ul>
-                                                    <li>Evaluated in parallel</li>
-                                                    <li>Use for sequential logic</li>
-                                                    <li>All assignments happen simultaneously</li>
-                                                </ul>
+                                        <strong>Non-blocking (&lt;=)</strong>
+                                        <ul>
+                                            <li>Evaluated in parallel</li>
+                                            <li>Use for sequential logic</li>
+                                            <li>All assignments happen simultaneously</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -841,7 +841,7 @@ end
 
 // Sequential Logic
 always @(posedge clk) begin
-    q <= d;  // Non-blocking
+    q &lt;= d;  // Non-blocking
 end</code></pre>
                             </div>
                             <div class="key-insight warning">
@@ -940,7 +940,7 @@ end</code></pre>
                             </div>
                             <div class="code-example">
                                 <pre><code>// Gray Code Conversion
-gray = binary ^ (binary >> 1);
+gray = binary ^ (binary &gt;&gt; 1);
 
 // Full Logic
 full = (wptr_gray[N:N-1] != rptr_gray_sync[N:N-1]) && 
@@ -1043,7 +1043,7 @@ S0 (R) |  S0    |  S1    |   0
 S1 (1) |  S2    |  S1    |   0
 S2 (10)|  S0    |  S3    |   0
 S3(101)|  S2    |  S4    |   0
-S4(11) |  S2    |  S1    |   1  <-- Detection!
+S4(11) |  S2    |  S1    |   1  &lt;-- Detection!
                                 </pre>
                             </div>
                             <div class="comparison-table">
@@ -1135,7 +1135,7 @@ S4(11) |  S2    |  S1    |   1  <-- Detection!
                     <div class="accordion-content">
                         <div class="content-inner">
                             <h4>Why FinFET?</h4>
-                            <p>At nodes < 20nm, Planar MOSFETs suffer from excessive <strong>Short Channel Effects
+                            <p>At nodes &lt; 20nm, Planar MOSFETs suffer from excessive <strong>Short Channel Effects
                                     (SCE)</strong>.</p>
                             <ul>
                                 <li><strong>Better Control:</strong> Gate wraps around the channel on 3 sides (Top,
@@ -1704,7 +1704,7 @@ matches = re.findall(pattern, text)
 
 print("my_design u_dut (")
 for i, (direction, width, name) in enumerate(matches):
-    comma = "," if i < len(matches)-1 else ""
+    comma = "," if i &lt; len(matches)-1 else ""
     print(f"    .{name}({name}){comma}")
 print(");")</code></pre>
                             </div>
@@ -1933,7 +1933,7 @@ sv_hex = re.findall(r"\d+'h[0-9A-Fa-f_]+", text)</code></pre>
     vector<int> map(128, -1);
     int left = 0, maxLen = 0;
     
-    for (int right = 0; right < s.length(); right++) {
+    for (int right = 0; right &lt; s.length(); right++) {
         char c = s[right];
         if (map[c] >= left) {
             left = map[c] + 1; // Shrink window
@@ -1976,12 +1976,12 @@ sv_hex = re.findall(r"\d+'h[0-9A-Fa-f_]+", text)</code></pre>
                     <div class="code-example">
                         <pre><code>int rangeBitwiseAnd(int m, int n) {
     int shift = 0;
-    while (m < n) {
-        m >>= 1;
-        n >>= 1;
+    while (m &lt; n) {
+        m &gt;&gt;= 1;
+        n &gt;&gt;= 1;
         shift++;
     }
-    return m << shift;
+    return m &lt;&lt; shift;
 }</code></pre>
                     </div>
                 </div>
@@ -2020,9 +2020,9 @@ unsigned char reverse(unsigned char n) {
                     <h4>Bitwise Operation (O(log bits)):</h4>
                     <div class="code-example">
                         <pre><code>unsigned char reverse(unsigned char n) {
-    n = (n & 0xF0) >> 4 | (n & 0x0F) << 4;  // Swap nibbles
-    n = (n & 0xCC) >> 2 | (n & 0x33) << 2;  // Swap pairs
-    n = (n & 0xAA) >> 1 | (n & 0x55) << 1;  // Swap bits
+    n = (n & 0xF0) &gt;&gt; 4 | (n & 0x0F) &lt;&lt; 4;  // Swap nibbles
+    n = (n & 0xCC) &gt;&gt; 2 | (n & 0x33) &lt;&lt; 2;  // Swap pairs
+    n = (n & 0xAA) &gt;&gt; 1 | (n & 0x55) &lt;&lt; 1;  // Swap bits
     return n;
 }</code></pre>
                     </div>
@@ -2135,11 +2135,11 @@ int count = __builtin_popcount(n);  // GCC/Clang
 
 // SWAR (SIMD Within A Register) - parallel counting
 int count = n;
-count = (count & 0x55555555) + ((count >> 1) & 0x55555555);
-count = (count & 0x33333333) + ((count >> 2) & 0x33333333);
-count = (count & 0x0F0F0F0F) + ((count >> 4) & 0x0F0F0F0F);
-count = (count & 0x00FF00FF) + ((count >> 8) & 0x00FF00FF);
-count = (count & 0x0000FFFF) + ((count >> 16) & 0x0000FFFF);</code></pre>
+count = (count & 0x55555555) + ((count &gt;&gt; 1) & 0x55555555);
+count = (count & 0x33333333) + ((count &gt;&gt; 2) & 0x33333333);
+count = (count & 0x0F0F0F0F) + ((count &gt;&gt; 4) & 0x0F0F0F0F);
+count = (count & 0x00FF00FF) + ((count &gt;&gt; 8) & 0x00FF00FF);
+count = (count & 0x0000FFFF) + ((count &gt;&gt; 16) & 0x0000FFFF);</code></pre>
                     </div>
                     <div class="key-insight">
                         <i class="fas fa-lightbulb"></i>
@@ -2201,11 +2201,11 @@ For non-power:   n     = 1010
                         <pre><code>// Get next power of 2
 int nextPowerOf2(int n) {
     n--;
-    n |= n >> 1;
-    n |= n >> 2;
-    n |= n >> 4;
-    n |= n >> 8;
-    n |= n >> 16;
+    n |= n &gt;&gt; 1;
+    n |= n &gt;&gt; 2;
+    n |= n &gt;&gt; 4;
+    n |= n &gt;&gt; 8;
+    n |= n &gt;&gt; 16;
     return n + 1;
 }
 
@@ -2282,7 +2282,7 @@ while (*status_reg == 0) {
 
 // Real-world example: UART status register
 #define UART_STATUS (*(volatile uint32_t*)0x40001000)
-#define TX_READY (1 << 5)
+#define TX_READY (1 &lt;&lt; 5)
 
 void uart_send(char c) {
     while (!(UART_STATUS & TX_READY)) {
