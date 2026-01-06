@@ -17,6 +17,7 @@ class SiliconVault {
         this.setupSmoothScroll();
         this.setupRoadmap();
         this.updatePlacementYear();
+        this.setupVisitorStats();
     }
 
     // Accordion functionality
@@ -364,6 +365,172 @@ class SiliconVault {
 
             yearElement.textContent = placementYear;
         }
+    }
+
+    // Visitor Statistics
+    setupVisitorStats() {
+        const statsToggle = document.getElementById('visitorStatsToggle');
+        const statsDropdown = document.getElementById('visitorStatsDropdown');
+        const closeStats = document.getElementById('closeStats');
+
+        // Toggle dropdown
+        statsToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            statsDropdown.classList.toggle('active');
+        });
+
+        // Close dropdown
+        closeStats.addEventListener('click', () => {
+            statsDropdown.classList.remove('active');
+        });
+
+        // Close when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!statsDropdown.contains(e.target) && !statsToggle.contains(e.target)) {
+                statsDropdown.classList.remove('active');
+            }
+        });
+
+        // Initialize visitor tracking
+        this.trackVisit();
+    }
+
+    async trackVisit() {
+        try {
+            // Get visitor's country using ipapi.co (free, no API key needed)
+            const geoResponse = await fetch('https://ipapi.co/json/');
+            const geoData = await geoResponse.json();
+
+            // Extract country information
+            const country = geoData.country_name || 'Unknown';
+            const countryCode = geoData.country_code || 'XX';
+
+            // Get flag emoji for the country
+            const flag = this.getCountryFlag(countryCode);
+
+            // Store country visit in localStorage
+            this.recordCountryVisit(country, countryCode, flag);
+
+            // Use CountAPI for global visitor counting
+            // This creates a unique counter for your site
+            const namespace = 'silicon-vault';
+            const key = 'total-visitors';
+
+            // Hit the counter (it auto-increments)
+            const countResponse = await fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`);
+            const countData = await countResponse.json();
+
+            // Update the display
+            this.updateVisitorDisplay(countData.value);
+
+        } catch (error) {
+            console.error('Error tracking visit:', error);
+            // Fallback to localStorage only if API fails
+            this.fallbackTracking();
+        }
+    }
+
+    getCountryFlag(countryCode) {
+        // Convert country code to flag emoji
+        if (!countryCode || countryCode === 'XX') return '🌍';
+
+        const codePoints = countryCode
+            .toUpperCase()
+            .split('')
+            .map(char => 127397 + char.charCodeAt());
+        return String.fromCodePoint(...codePoints);
+    }
+
+    recordCountryVisit(countryName, countryCode, flag) {
+        // Get existing country data from localStorage
+        const countriesData = this.getCountriesData();
+
+        // Check if this is a new session (to avoid counting same user multiple times)
+        const lastVisit = sessionStorage.getItem('lastVisitTimestamp');
+        const now = Date.now();
+
+        // Only count if this is a new session (or more than 30 minutes since last count)
+        if (!lastVisit || (now - parseInt(lastVisit)) > 1800000) {
+            if (!countriesData[countryCode]) {
+                countriesData[countryCode] = {
+                    name: countryName,
+                    flag: flag,
+                    count: 0
+                };
+            }
+
+            countriesData[countryCode].count++;
+
+            // Save updated data
+            localStorage.setItem('visitorCountries', JSON.stringify(countriesData));
+            sessionStorage.setItem('lastVisitTimestamp', now.toString());
+        }
+
+        // Update the countries display
+        this.updateCountriesDisplay(countriesData);
+    }
+
+    getCountriesData() {
+        const saved = localStorage.getItem('visitorCountries');
+        return saved ? JSON.parse(saved) : {};
+    }
+
+    updateVisitorDisplay(totalVisitors) {
+        // Update badge
+        const badge = document.getElementById('visitorCountBadge');
+        if (badge) {
+            badge.textContent = totalVisitors > 999 ? '999+' : totalVisitors;
+        }
+
+        // Update total visitors in dropdown
+        const totalElement = document.getElementById('totalVisitors');
+        if (totalElement) {
+            totalElement.textContent = totalVisitors.toLocaleString();
+        }
+    }
+
+    updateCountriesDisplay(countriesData) {
+        const countriesList = document.getElementById('countriesList');
+        if (!countriesList) return;
+
+        // Sort countries by count (descending)
+        const sortedCountries = Object.entries(countriesData)
+            .map(([code, data]) => ({ code, ...data }))
+            .sort((a, b) => b.count - a.count);
+
+        if (sortedCountries.length === 0) {
+            countriesList.innerHTML = '<div class="no-data">No country data yet...</div>';
+            return;
+        }
+
+        // Build HTML for countries list
+        const html = sortedCountries.map(country => `
+            <div class="country-item">
+                <div class="country-name">
+                    <span class="country-flag">${country.flag}</span>
+                    <span>${country.name}</span>
+                </div>
+                <div class="country-count">${country.count}</div>
+            </div>
+        `).join('');
+
+        countriesList.innerHTML = html;
+    }
+
+    fallbackTracking() {
+        // Fallback if APIs are blocked or fail
+        const fallbackCount = localStorage.getItem('fallbackVisitorCount') || '0';
+        const newCount = parseInt(fallbackCount) + 1;
+        localStorage.setItem('fallbackVisitorCount', newCount.toString());
+
+        this.updateVisitorDisplay(newCount);
+
+        // Try to get basic country info from browser language
+        const language = navigator.language || 'en-US';
+        const countryCode = language.split('-')[1] || 'XX';
+        const flag = this.getCountryFlag(countryCode);
+
+        this.recordCountryVisit('Unknown', countryCode, flag);
     }
 }
 
