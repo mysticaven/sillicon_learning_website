@@ -1,0 +1,16 @@
+{
+  "name": "silicon-vault",
+  "version": "1.0.0",
+  "description": "Hardware Engineering Learning Platform",
+  "private": true,
+  "dependencies": {
+    "@netlify/blobs": "^7.0.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
+  },
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'Static site - no build needed'"
+  }
+}

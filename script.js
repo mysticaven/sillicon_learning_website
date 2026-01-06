@@ -397,37 +397,110 @@ class SiliconVault {
 
     async trackVisit() {
         try {
-            // Get visitor's country using ipapi.co (free, no API key needed)
-            const geoResponse = await fetch('https://ipapi.co/json/');
-            const geoData = await geoResponse.json();
+            // Check if this is a new session (to avoid counting same user multiple times)
+            const lastVisit = sessionStorage.getItem('lastVisitTimestamp');
+            const now = Date.now();
 
-            // Extract country information
-            const country = geoData.country_name || 'Unknown';
-            const countryCode = geoData.country_code || 'XX';
+            // Only track if this is a new session (or more than 30 minutes since last count)
+            const shouldTrack = !lastVisit || (now - parseInt(lastVisit)) > 1800000;
 
-            // Get flag emoji for the country
-            const flag = this.getCountryFlag(countryCode);
+            if (shouldTrack) {
+                // Get visitor's country using ipapi.co (free, no API key needed)
+                const geoResponse = await fetch('https://ipapi.co/json/');
+                const geoData = await geoResponse.json();
 
-            // Store country visit in localStorage
-            this.recordCountryVisit(country, countryCode, flag);
+                // Extract country information
+                const country = geoData.country_name || 'Unknown';
+                const countryCode = geoData.country_code || 'XX';
 
-            // Use CountAPI for global visitor counting
-            // This creates a unique counter for your site
-            const namespace = 'silicon-vault';
-            const key = 'total-visitors';
+                // Get flag emoji for the country
+                const flag = this.getCountryFlag(countryCode);
 
-            // Hit the counter (it auto-increments)
-            const countResponse = await fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`);
-            const countData = await countResponse.json();
+                // Try to use Netlify Function first (for production)
+                try {
+                    const response = await fetch('/.netlify/functions/track-visit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            country,
+                            countryCode,
+                            flag
+                        })
+                    });
 
-            // Update the display
-            this.updateVisitorDisplay(countData.value);
+                    if (response.ok) {
+                        const data = await response.json();
+                        this.updateVisitorDisplay(data.totalVisitors);
+                        this.updateCountriesDisplay(data.countries);
+                        sessionStorage.setItem('lastVisitTimestamp', now.toString());
+                        return;
+                    }
+                } catch (functionError) {
+                    console.log('Netlify function not available, using fallback...', functionError);
+                }
+
+                // Fallback to CountAPI if Netlify function is not available (local development)
+                this.fallbackAPITracking(country, countryCode, flag);
+                sessionStorage.setItem('lastVisitTimestamp', now.toString());
+            } else {
+                // Just load existing data without tracking new visit
+                this.loadVisitorStats();
+            }
 
         } catch (error) {
             console.error('Error tracking visit:', error);
-            // Fallback to localStorage only if API fails
-            this.fallbackTracking();
+            // Final fallback to localStorage only
+            this.fallbackLocalTracking();
         }
+    }
+
+    async loadVisitorStats() {
+        try {
+            // Try to load from Netlify Function
+            const response = await fetch('/.netlify/functions/track-visit');
+            if (response.ok) {
+                const data = await response.json();
+                this.updateVisitorDisplay(data.totalVisitors);
+                this.updateCountriesDisplay(data.countries);
+                return;
+            }
+        } catch (error) {
+            console.log('Loading stats from fallback sources...');
+        }
+
+        // Fallback to CountAPI for global count
+        try {
+            const namespace = 'silicon-vault';
+            const key = 'total-visitors';
+            const countResponse = await fetch(`https://api.countapi.xyz/get/${namespace}/${key}`);
+            const countData = await countResponse.json();
+            this.updateVisitorDisplay(countData.value || 0);
+        } catch (error) {
+            console.error('Error loading visitor count:', error);
+        }
+
+        // Load countries from localStorage
+        const countriesData = this.getCountriesData();
+        this.updateCountriesDisplay(countriesData);
+    }
+
+    async fallbackAPITracking(country, countryCode, flag) {
+        // Use CountAPI for global visitor counting (fallback for local development)
+        const namespace = 'silicon-vault';
+        const key = 'total-visitors';
+
+        try {
+            const countResponse = await fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`);
+            const countData = await countResponse.json();
+            this.updateVisitorDisplay(countData.value);
+        } catch (error) {
+            console.error('CountAPI error:', error);
+        }
+
+        // Store country visit in localStorage
+        this.recordCountryVisit(country, countryCode, flag);
     }
 
     getCountryFlag(countryCode) {
@@ -517,8 +590,8 @@ class SiliconVault {
         countriesList.innerHTML = html;
     }
 
-    fallbackTracking() {
-        // Fallback if APIs are blocked or fail
+    fallbackLocalTracking() {
+        // Final fallback if all APIs fail
         const fallbackCount = localStorage.getItem('fallbackVisitorCount') || '0';
         const newCount = parseInt(fallbackCount) + 1;
         localStorage.setItem('fallbackVisitorCount', newCount.toString());

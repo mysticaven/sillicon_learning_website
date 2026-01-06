@@ -1,0 +1,11 @@
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[build]
+  functions = "netlify/functions"
+
+[functions]
+  # Enable Netlify Blobs
+  included_files = ["netlify/functions/**"]
