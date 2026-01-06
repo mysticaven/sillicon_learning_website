@@ -9,6 +9,7 @@
         content="Comprehensive master-list for Digital Design, Computer Architecture, and Firmware Engineering. Your complete guide to Google & Apple hardware interview prep.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="favicon.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -584,6 +585,188 @@ stable BEFORE   stable AFTER
                         </div>
                     </div>
                 </div>
+                <div class="accordion-item" data-id="q13">
+                    <button class="accordion-btn">
+                        <div class="question-content">
+                            <span class="question-number">13</span>
+                            <span class="question-text">Sequence Detector (1011) - Moore vs Mealy</span>
+                            <div class="question-tags">
+                                <span class="tag">FSM Design</span>
+                                <span class="tag">Digital Logic</span>
+                            </div>
+                        </div>
+                        <div class="accordion-controls">
+                            <label class="checkbox-container" onclick="event.stopPropagation()">
+                                <input type="checkbox" class="question-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <h4>Design Challenge:</h4>
+                            <p>Detect sequence <strong>1011</strong>. Contrast Overlapping vs Non-overlapping detection.
+                            </p>
+                            <h4>State Transition (Moore Machine - Overlapping):</h4>
+                            <div class="code-example">
+                                <pre>
+State  |  In=0  |  In=1  | Output
+-------|--------|--------|-------
+S0 (R) |  S0    |  S1    |   0
+S1 (1) |  S2    |  S1    |   0
+S2 (10)|  S0    |  S3    |   0
+S3(101)|  S2    |  S4    |   0
+S4(11) |  S2    |  S1    |   1  <-- Detection!
+                                </pre>
+                            </div>
+                            <div class="comparison-table">
+                                <div class="comparison-row">
+                                    <div class="comparison-cell">
+                                        <strong>Moore FSM</strong>
+                                        <ul>
+                                            <li>Output depends ONLY on current state</li>
+                                            <li>Safer (glitch-free output)</li>
+                                            <li>Latency: 1 cycle delay usually</li>
+                                        </ul>
+                                    </div>
+                                    <div class="comparison-cell">
+                                        <strong>Mealy FSM</strong>
+                                        <ul>
+                                            <li>Output depends on State AND Input</li>
+                                            <li>Faster (reacts in same cycle)</li>
+                                            <li>Risk of glitches if input glitches</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" data-id="q14">
+                    <button class="accordion-btn">
+                        <div class="question-content">
+                            <span class="question-number">14</span>
+                            <span class="question-text">Integrated Clock Gating (ICG) Cell</span>
+                            <div class="question-tags">
+                                <span class="tag">Low Power</span>
+                                <span class="tag">Clock Tree</span>
+                            </div>
+                        </div>
+                        <div class="accordion-controls">
+                            <label class="checkbox-container" onclick="event.stopPropagation()">
+                                <input type="checkbox" class="question-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <h4>Schematic:</h4>
+                            <div class="solution-diagram">
+                                <pre>
+   Enable ──┐    ____
+            ├──>|    \
+   CLK ─────┤   |LAT  |──┐   ____
+            │   |____/   └──|    \
+            |               | AND |─── Gated_CLK
+   CLK ─────────────────────|____/
+                                </pre>
+                            </div>
+                            <h4>Why the Latch?</h4>
+                            <p>To prevent <strong>glitches</strong> on the output clock. The latch ensures the Enable
+                                signal is stable (Low or High) <em>during the entire active phase</em> of the clock.
+                                Without it, if Enable acts while CLK is high, you'd chop the clock pulse (glitch).</p>
+                            <div class="key-insight">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Interview Tip:</strong> Clock Gating saves <em>Dynamic Power</em> (Switching
+                                Power) by stopping the charging/discharging of the clock tree capacitance.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" data-id="q15">
+                    <button class="accordion-btn">
+                        <div class="question-content">
+                            <span class="question-number">15</span>
+                            <span class="question-text">FinFET vs Planar MOS & DIBL</span>
+                            <div class="question-tags">
+                                <span class="tag">VLSI Physics</span>
+                                <span class="tag">Process Node</span>
+                            </div>
+                        </div>
+                        <div class="accordion-controls">
+                            <label class="checkbox-container" onclick="event.stopPropagation()">
+                                <input type="checkbox" class="question-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <h4>Why FinFET?</h4>
+                            <p>At nodes < 20nm, Planar MOSFETs suffer from excessive <strong>Short Channel Effects
+                                    (SCE)</strong>.</p>
+                            <ul>
+                                <li><strong>Better Control:</strong> Gate wraps around the channel on 3 sides (Top,
+                                    Left, Right).</li>
+                                <li><strong>Lower Leakage:</strong> Significantly reduces off-state current ($I_{off}$).
+                                </li>
+                                <li><strong>Higher Drive Current:</strong> Larger effective width in smaller footprint.
+                                </li>
+                            </ul>
+                            <h4>What is DIBL?</h4>
+                            <p><strong>Drain-Induced Barrier Lowering:</strong> As Drain voltage ($V_{ds}$) increases,
+                                the depletion region of the drain expands and lowers the potential barrier at the
+                                source. </p>
+                            <p><strong>Result:</strong> Channel turns on at a lower $V_{gs}$ (Threshold voltage $V_{th}$
+                                decreases), causing leakage.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" data-id="q16">
+                    <button class="accordion-btn">
+                        <div class="question-content">
+                            <span class="question-number">16</span>
+                            <span class="question-text">VTC Derivation & Power Switching</span>
+                            <div class="question-tags">
+                                <span class="tag">CMOS Basics</span>
+                                <span class="tag">Google</span>
+                            </div>
+                        </div>
+                        <div class="accordion-controls">
+                            <label class="checkbox-container" onclick="event.stopPropagation()">
+                                <input type="checkbox" class="question-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <h4>CMOS Inverter VTC (Voltage Transfer Characteristic):</h4>
+                            <p>Curve plotting $V_{out}$ vs $V_{in}$.</p>
+                            <ul>
+                                <li><strong>Region 1:</strong> NMOS OFF, PMOS Linear (Output = VDD)</li>
+                                <li><strong>Region 2:</strong> NMOS Sat, PMOS Linear</li>
+                                <li><strong>Region 3 (Switching Point $V_M$):</strong> Both Saturation</li>
+                                <li><strong>Region 4:</strong> NMOS Linear, PMOS Sat</li>
+                                <li><strong>Region 5:</strong> NMOS Linear, PMOS OFF (Output = GND)</li>
+                            </ul>
+                            <h4>Impact of W/L Ratio:</h4>
+                            <p>If you increase $(W/L)_{PMOS}$: The PMOS becomes stronger. It pulls the output HIGH more
+                                easily. <br>
+                                <strong>Result:</strong> The switching threshold $V_M$ shifts to the
+                                <strong>RIGHT</strong> (towards VDD).
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="category-group" id="arch" data-category="arch">
@@ -791,25 +974,15 @@ stable BEFORE   stable AFTER
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="category-group" id="coding" data-category="python">
-                <div class="category-header">
-                    <div class="category-title">
-                        <i class="fab fa-python"></i>
-                        <h3>III. Python & Scripting for Hardware</h3>
-                    </div>
-                    <div class="category-badge">2 Questions</div>
-                </div>
-
-                <div class="accordion-item" data-id="q61">
+                <div class="accordion-item" data-id="q42">
                     <button class="accordion-btn">
                         <div class="question-content">
-                            <span class="question-number">61</span>
-                            <span class="question-text">Parse 1GB log for "ERROR" efficiently</span>
+                            <span class="question-number">42</span>
+                            <span class="question-text">Cache Calculation (Tag, Index, Offset)</span>
                             <div class="question-tags">
-                                <span class="tag">Python</span>
-                                <span class="tag">Log Parsing</span>
+                                <span class="tag">Memory</span>
+                                <span class="tag">Calculation</span>
                             </div>
                         </div>
                         <div class="accordion-controls">
@@ -822,22 +995,332 @@ stable BEFORE   stable AFTER
                     </button>
                     <div class="accordion-content">
                         <div class="content-inner">
-                            <h4>Efficient Solution:</h4>
-                            <div class="code-example">
-                                <pre><code>with open("log.txt", "r") as f:
+                            <h4>Problem:</h4>
+                            <p>64KB Cache, 64-byte line size, 4-way Set Associative, 32-bit Address. Find Offset, Index,
+                                Tag bits.</p>
+                            <h4>Solution Steps:</h4>
+                            <ol>
+                                <li><strong>Offset:</strong> Depends on block size. $\log_2(64) = 6$ bits.</li>
+                                <li><strong>Number of Sets:</strong>
+                                    $$ \text{Total Lines} = \frac{64KB}{64B} = 1024 \text{ lines} $$
+                                    $$ \text{Sets} = \frac{1024}{4 \text{ (ways)}} = 256 \text{ sets} $$
+                                </li>
+                                <li><strong>Index:</strong> Depends on number of sets. $\log_2(256) = 8$ bits.</li>
+                                <li><strong>Tag:</strong> Remaining bits. $32 - (8 + 6) = 18$ bits.</li>
+                            </ol>
+                            <div class="key-insight">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Answer:</strong> Tag: 18, Index: 8, Offset: 6.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" data-id="q43">
+                    <button class="accordion-btn">
+                        <div class="question-content">
+                            <span class="question-number">43</span>
+                            <span class="question-text">FIFO Depth Calculation</span>
+                            <div class="question-tags">
+                                <span class="tag">System Design</span>
+                                <span class="tag">NVIDIA</span>
+                            </div>
+                        </div>
+                        <div class="accordion-controls">
+                            <label class="checkbox-container" onclick="event.stopPropagation()">
+                                <input type="checkbox" class="question-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <h4>Topic 5 Scenario:</h4>
+                            <p>Producer: 200MHz, 80% duty cycle. Consumer: 150MHz continuous. Burst: 1000 items.</p>
+                            <h4>Formula:</h4>
+                            <p>$$ \text{Depth} = \text{Burst} \times (1 - \frac{\text{Consumer Rate}}{\text{Producer
+                                Rate}}) $$</p>
+                            <h4>Calculation:</h4>
+                            <ul>
+                                <li>Producer effective rate = $200 \times 0.8 = 160 \text{ MHz}$.</li>
+                                <li>Wait, logic check: Producer writes 1000 items at 200MHz peak? Or average?
+                                    <br><em>Correct Approach:</em> Time to write burst = $1000 / 200\text{MHz} = 5\mu
+                                    s$.
+                                    <br>Consumer reads in $5\mu s$ = $150\text{MHz} \times 5 = 750$.
+                                    <br>Buffer needed = $1000 - 750 = 250$.
+                                </li>
+                            </ul>
+                            <div class="key-insight">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Answer:</strong> Minimum Depth = 250 entries.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" data-id="q44">
+                    <button class="accordion-btn">
+                        <div class="question-content">
+                            <span class="question-number">44</span>
+                            <span class="question-text">LDO vs Buck Converter</span>
+                            <div class="question-tags">
+                                <span class="tag">Power Delivery</span>
+                                <span class="tag">Apple</span>
+                            </div>
+                        </div>
+                        <div class="accordion-controls">
+                            <label class="checkbox-container" onclick="event.stopPropagation()">
+                                <input type="checkbox" class="question-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <h4>When to use LDO?</h4>
+                            <p>For sensitive analog/RF circuits (PLLs, ADCs) that need clean voltage (low noise), or
+                                when $V_{in}$ is very close to $V_{out}$ (high efficiency region).</p>
+                            <h4>When to use Buck?</h4>
+                            <p>For high-power digital cores (CPU/GPU) where efficiency (>90%) is critical and noise is
+                                manageable.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" data-id="q45">
+                    <button class="accordion-btn">
+                        <div class="question-content">
+                            <span class="question-number">45</span>
+                            <span class="question-text">Interrupt Handling Flow</span>
+                            <div class="question-tags">
+                                <span class="tag">CPU Core</span>
+                                <span class="tag">Context Switch</span>
+                            </div>
+                        </div>
+                        <div class="accordion-controls">
+                            <label class="checkbox-container" onclick="event.stopPropagation()">
+                                <input type="checkbox" class="question-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <h4>Sequence of Events:</h4>
+                            <ol>
+                                <li><strong>Assertion:</strong> Peripheral asserts IRQ line.</li>
+                                <li><strong>Context Save:</strong> Push PC and CPSR to Stack.</li>
+                                <li><strong>Vector Fetch:</strong> Jump to ISR address.</li>
+                                <li><strong>Execute ISR:</strong> Run driver code.</li>
+                                <li><strong>Context Restore:</strong> Pop PC/CPSR (RTE instruction).</li>
+                            </ol>
+                        </div>
+                        <div class="accordion-item" data-id="q63">
+                            <button class="accordion-btn">
+                                <div class="question-content">
+                                    <span class="question-number">63</span>
+                                    <span class="question-text">Find & Replace in Multiple Files (Automation)</span>
+                                    <div class="question-tags">
+                                        <span class="tag">Python</span>
+                                        <span class="tag">OS Module</span>
+                                    </div>
+                                </div>
+                                <div class="accordion-controls">
+                                    <label class="checkbox-container" onclick="event.stopPropagation()">
+                                        <input type="checkbox" class="question-checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="content-inner">
+                                    <h4>Task:</h4>
+                                    <p>Recursively find all <code>.v</code> files and replace "module old_name" with
+                                        "module new_name".</p>
+                                    <h4>Solution:</h4>
+                                    <div class="code-example">
+                                        <pre><code>import os
+
+root_dir = "./design"
+for dirpath, _, filenames in os.walk(root_dir):
+    for fname in filenames:
+        if fname.endswith(".v"):
+            path = os.path.join(dirpath, fname)
+            
+            with open(path, "r") as f:
+                content = f.read()
+            
+            if "module old_name" in content:
+                new_content = content.replace("module old_name", "module new_name")
+                with open(path, "w") as f:
+                    f.write(new_content)
+                print(f"Updated {path}")</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" data-id="q64">
+                            <button class="accordion-btn">
+                                <div class="question-content">
+                                    <span class="question-number">64</span>
+                                    <span class="question-text">Parsing CSV regression results</span>
+                                    <div class="question-tags">
+                                        <span class="tag">Pandas</span>
+                                        <span class="tag">Data Handling</span>
+                                    </div>
+                                </div>
+                                <div class="accordion-controls">
+                                    <label class="checkbox-container" onclick="event.stopPropagation()">
+                                        <input type="checkbox" class="question-checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="content-inner">
+                                    <h4>Scenario:</h4>
+                                    <p>Regression output <code>results.csv</code> has columns: TestName, Status
+                                        (PASS/FAIL), Runtime.</p>
+                                    <h4>Tasks:</h4>
+                                    <ol>
+                                        <li>Count PASS/FAIL/TOTAL.</li>
+                                        <li>Find test with max runtime.</li>
+                                    </ol>
+                                    <h4>Pandas Solution:</h4>
+                                    <div class="code-example">
+                                        <pre><code>import pandas as pd
+
+df = pd.read_csv("results.csv")
+
+# 1. Counts
+counts = df['Status'].value_counts()
+print(counts)
+
+# 2. Max Runtime
+slowest_test = df.loc[df['Runtime'].idxmax()]
+print(f"Slowest: {slowest_test['TestName']} ({slowest_test['Runtime']}s)")</code></pre>
+                                    </div>
+                                    <h4>Pure Python Solution (No Libraries):</h4>
+                                    <div class="code-example">
+                                        <pre><code>import csv
+
+max_runtime = 0
+slowest = ""
+counts = {"PASS": 0, "FAIL": 0}
+
+with open("results.csv", "r") as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        counts[row['Status']] += 1
+        curr_time = float(row['Runtime'])
+        if curr_time > max_runtime:
+            max_runtime = curr_time
+            slowest = row['TestName']</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" data-id="q65">
+                            <button class="accordion-btn">
+                                <div class="question-content">
+                                    <span class="question-number">65</span>
+                                    <span class="question-text">Generate Verilog Instantiation from Module</span>
+                                    <div class="question-tags">
+                                        <span class="tag">Regex</span>
+                                        <span class="tag">Automation</span>
+                                    </div>
+                                </div>
+                                <div class="accordion-controls">
+                                    <label class="checkbox-container" onclick="event.stopPropagation()">
+                                        <input type="checkbox" class="question-checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="content-inner">
+                                    <h4>Goal:</h4>
+                                    <p>Read a Verilog module header and print an instantiation template.</p>
+                                    <h4>Input:</h4>
+                                    <pre><code>module my_design (
+    input clk,
+    input rst_n,
+    input [31:0] data_in,
+    output reg done
+);</code></pre>
+                                    <h4>Python Script:</h4>
+                                    <div class="code-example">
+                                        <pre><code>import re
+
+text = """...verilog code string..."""
+
+# Regex to capture direction, width (optional), and name
+# Groups: 1=dir, 2=width, 3=name
+pattern = r"\s*(input|output)\s+(?:reg\s+)?(?:(\[[^\]]+\])\s+)?(\w+)"
+
+matches = re.findall(pattern, text)
+
+print("my_design u_dut (")
+for i, (direction, width, name) in enumerate(matches):
+    comma = "," if i < len(matches)-1 else ""
+    print(f"    .{name}({name}){comma}")
+print(");")</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="category-header">
+                            <div class="category-title">
+                                <i class="fab fa-python"></i>
+                                <h3>III. Python & Scripting for Hardware</h3>
+                            </div>
+                            <div class="category-badge">2 Questions</div>
+                        </div>
+
+                        <div class="accordion-item" data-id="q61">
+                            <button class="accordion-btn">
+                                <div class="question-content">
+                                    <span class="question-number">61</span>
+                                    <span class="question-text">Parse 1GB log for "ERROR" efficiently</span>
+                                    <div class="question-tags">
+                                        <span class="tag">Python</span>
+                                        <span class="tag">Log Parsing</span>
+                                    </div>
+                                </div>
+                                <div class="accordion-controls">
+                                    <label class="checkbox-container" onclick="event.stopPropagation()">
+                                        <input type="checkbox" class="question-checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="content-inner">
+                                    <h4>Efficient Solution:</h4>
+                                    <div class="code-example">
+                                        <pre><code>with open("log.txt", "r") as f:
     for line in f:
         if "ERROR" in line:
             print(line.strip())</code></pre>
-                            </div>
-                            <h4>Why This Works:</h4>
-                            <ul>
-                                <li>Uses line-by-line iterator (doesn't load entire file into RAM)</li>
-                                <li>Memory usage: O(1) - only one line in memory at a time</li>
-                                <li>Time complexity: O(n) where n = number of lines</li>
-                            </ul>
-                            <h4>Advanced Optimization:</h4>
-                            <div class="code-example">
-                                <pre><code>import re
+                                    </div>
+                                    <h4>Why This Works:</h4>
+                                    <ul>
+                                        <li>Uses line-by-line iterator (doesn't load entire file into RAM)</li>
+                                        <li>Memory usage: O(1) - only one line in memory at a time</li>
+                                        <li>Time complexity: O(n) where n = number of lines</li>
+                                    </ul>
+                                    <h4>Advanced Optimization:</h4>
+                                    <div class="code-example">
+                                        <pre><code>import re
 import mmap
 
 # Memory-mapped file for even faster access
@@ -852,47 +1335,47 @@ pattern = re.compile(rb'.*ERROR.*')
 with open("log.txt", "rb") as f:
     for match in pattern.finditer(f.read()):
         print(match.group().decode())</code></pre>
-                            </div>
-                            <div class="key-insight">
-                                <i class="fas fa-lightbulb"></i>
-                                <strong>Pro Tip:</strong> For multi-GB files, consider using shell tools like
-                                <code>grep</code> or <code>awk</code> which are optimized for text processing.
+                                    </div>
+                                    <div class="key-insight">
+                                        <i class="fas fa-lightbulb"></i>
+                                        <strong>Pro Tip:</strong> For multi-GB files, consider using shell tools like
+                                        <code>grep</code> or <code>awk</code> which are optimized for text processing.
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="accordion-item" data-id="q62">
-                    <button class="accordion-btn">
-                        <div class="question-content">
-                            <span class="question-number">62</span>
-                            <span class="question-text">Regex for Hex Addresses</span>
-                            <div class="question-tags">
-                                <span class="tag">Regex</span>
-                                <span class="tag">Python</span>
-                            </div>
-                        </div>
-                        <div class="accordion-controls">
-                            <label class="checkbox-container" onclick="event.stopPropagation()">
-                                <input type="checkbox" class="question-checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="content-inner">
-                            <h4>Basic Pattern:</h4>
-                            <div class="code-example">
-                                <pre><code>import re
+                        <div class="accordion-item" data-id="q62">
+                            <button class="accordion-btn">
+                                <div class="question-content">
+                                    <span class="question-number">62</span>
+                                    <span class="question-text">Regex for Hex Addresses</span>
+                                    <div class="question-tags">
+                                        <span class="tag">Regex</span>
+                                        <span class="tag">Python</span>
+                                    </div>
+                                </div>
+                                <div class="accordion-controls">
+                                    <label class="checkbox-container" onclick="event.stopPropagation()">
+                                        <input type="checkbox" class="question-checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="content-inner">
+                                    <h4>Basic Pattern:</h4>
+                                    <div class="code-example">
+                                        <pre><code>import re
 
 text = "Address: 0x1A2B3C4D, Data: 0xDEADBEEF"
 addresses = re.findall(r'0x[0-9A-Fa-f]+', text)
 print(addresses)  # ['0x1A2B3C4D', '0xDEADBEEF']</code></pre>
-                            </div>
-                            <h4>Advanced Patterns:</h4>
-                            <div class="code-example">
-                                <pre><code># Match specific bit widths
+                                    </div>
+                                    <h4>Advanced Patterns:</h4>
+                                    <div class="code-example">
+                                        <pre><code># Match specific bit widths
 addr_32bit = re.findall(r'0x[0-9A-Fa-f]{8}', text)  # Exactly 32-bit
 addr_64bit = re.findall(r'0x[0-9A-Fa-f]{16}', text) # Exactly 64-bit
 
@@ -904,56 +1387,279 @@ full_pattern = re.findall(r"(\d+'h)?0x([0-9A-Fa-f]+)", text)
 
 # Match SystemVerilog hex literals
 sv_hex = re.findall(r"\d+'h[0-9A-Fa-f_]+", text)</code></pre>
-                            </div>
-                            <h4>Common Use Cases:</h4>
-                            <ul>
-                                <li>Parsing simulation logs for memory addresses</li>
-                                <li>Extracting register values from debug output</li>
-                                <li>Validating hex constants in RTL code</li>
-                                <li>Converting between number formats in scripts</li>
-                            </ul>
-                            <div class="key-insight">
-                                <i class="fas fa-lightbulb"></i>
-                                <strong>Regex Breakdown:</strong> <code>0x</code> matches literal "0x",
-                                <code>[0-9A-Fa-f]</code> matches any hex digit, <code>+</code> means one or more.
+                                    </div>
+                                    <h4>Common Use Cases:</h4>
+                                    <ul>
+                                        <li>Parsing simulation logs for memory addresses</li>
+                                        <li>Extracting register values from debug output</li>
+                                        <li>Validating hex constants in RTL code</li>
+                                        <li>Converting between number formats in scripts</li>
+                                    </ul>
+                                    <div class="key-insight">
+                                        <i class="fas fa-lightbulb"></i>
+                                        <strong>Regex Breakdown:</strong> <code>0x</code> matches literal "0x",
+                                        <code>[0-9A-Fa-f]</code> matches any hex digit, <code>+</code> means one or
+                                        more.
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="category-group" data-category="programming">
-                <div class="category-header">
-                    <div class="category-title">
-                        <i class="fas fa-code"></i>
-                        <h3>IV. Programming & Bit Manipulation</h3>
-                    </div>
-                    <div class="category-badge">3 Questions</div>
-                </div>
+                    <div class="category-group" data-category="programming">
+                        <div class="category-header">
+                            <div class="category-title">
+                                <i class="fas fa-code"></i>
+                                <h3>IV. Programming & Bit Manipulation</h3>
+                            </div>
+                            <div class="category-badge">3 Questions</div>
+                        </div>
 
-                <div class="accordion-item" data-id="q81">
-                    <button class="accordion-btn">
-                        <div class="question-content">
-                            <span class="question-number">81</span>
-                            <span class="question-text">Count Set Bits (Brian Kernighan's Algorithm)</span>
-                            <div class="question-tags">
-                                <span class="tag">Bit Manipulation</span>
-                                <span class="tag">Algorithms</span>
+                        <div class="accordion-item" data-id="q82">
+                            <button class="accordion-btn">
+                                <div class="question-content">
+                                    <span class="question-number">82</span>
+                                    <span class="question-text">Detect Cycle in Linked List</span>
+                                    <div class="question-tags">
+                                        <span class="tag">DSA</span>
+                                        <span class="tag">Pointers</span>
+                                    </div>
+                                </div>
+                                <div class="accordion-controls">
+                                    <label class="checkbox-container" onclick="event.stopPropagation()">
+                                        <input type="checkbox" class="question-checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="content-inner">
+                                    <h4>Floyd's Cycle-Finding Algorithm (Tortoise & Hare):</h4>
+                                    <div class="code-example">
+                                        <pre><code>bool hasCycle(ListNode *head) {
+    if (!head) return false;
+    ListNode *slow = head;
+    ListNode *fast = head;
+    
+    while (fast && fast->next) {
+        slow = slow->next;          // Move 1 step
+        fast = fast->next->next;    // Move 2 steps
+        
+        if (slow == fast) {
+            return true;  // Cycle detected
+        }
+    }
+    return false;
+}</code></pre>
+                                    </div>
+                                    <div class="key-insight">
+                                        <i class="fas fa-lightbulb"></i>
+                                        <strong>Why it works:</strong> If there is a cycle, the fast runner will
+                                        eventually "lap" and catch the slow runner inside the loop.
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="accordion-controls">
-                            <label class="checkbox-container" onclick="event.stopPropagation()">
-                                <input type="checkbox" class="question-checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                            <i class="fas fa-chevron-down"></i>
+
+                        <!-- LeetCode Hardware Specials -->
+                        <div class="accordion-item" data-id="q90">
+                            <button class="accordion-btn">
+                                <div class="question-content">
+                                    <span class="question-number">90</span>
+                                    <span class="question-text">Longest Substring Without Repeating Characters</span>
+                                    <div class="question-tags">
+                                        <span class="tag">Sliding Window</span>
+                                        <span class="tag">Strings</span>
+                                    </div>
+                                </div>
+                                <div class="accordion-controls">
+                                    <label class="checkbox-container" onclick="event.stopPropagation()">
+                                        <input type="checkbox" class="question-checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="content-inner">
+                                    <h4>Algorithm:</h4>
+                                    <p>Use a sliding window <code>[left, right]</code> and a hash map to store the last
+                                        seen index of characters.</p>
+                                    <div class="code-example">
+                                        <pre><code>int lengthOfLongestSubstring(string s) {
+    vector<int> map(128, -1);
+    int left = 0, maxLen = 0;
+    
+    for (int right = 0; right < s.length(); right++) {
+        char c = s[right];
+        if (map[c] >= left) {
+            left = map[c] + 1; // Shrink window
+        }
+        map[c] = right;        // Update char index
+        maxLen = max(maxLen, right - left + 1);
+    }
+    return maxLen;
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="content-inner">
-                            <h4>Algorithm:</h4>
-                            <div class="code-example">
-                                <pre><code>int countSetBits(int n) {
+
+                        <div class="accordion-item" data-id="q91">
+                            <button class="accordion-btn">
+                                <div class="question-content">
+                                    <span class="question-number">91</span>
+                                    <span class="question-text">Bitwise AND of Numbers Range</span>
+                                    <div class="question-tags">
+                                        <span class="tag">Bit Manipulation</span>
+                                        <span class="tag">LeetCode 201</span>
+                                    </div>
+                                </div>
+                                <div class="accordion-controls">
+                                    <label class="checkbox-container" onclick="event.stopPropagation()">
+                                        <input type="checkbox" class="question-checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="content-inner">
+                                    <h4>Problem:</h4>
+                                    <p>Given range [m, n], find the bitwise AND of all numbers in this range.</p>
+                                    <h4>Insight:</h4>
+                                    <p>The result is the <strong>common prefix</strong> of m and n. All bits to the
+                                        right of the common prefix will eventually flip to 0.</p>
+                                    <div class="code-example">
+                                        <pre><code>int rangeBitwiseAnd(int m, int n) {
+    int shift = 0;
+    while (m < n) {
+        m >>= 1;
+        n >>= 1;
+        shift++;
+    }
+    return m << shift;
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" data-id="q83">
+                            <button class="accordion-btn">
+                                <div class="question-content">
+                                    <span class="question-number">83</span>
+                                    <span class="question-text">Reverse Bits of a Byte</span>
+                                    <div class="question-tags">
+                                        <span class="tag">Bit Tricks</span>
+                                        <span class="tag">Optimization</span>
+                                    </div>
+                                </div>
+                                <div class="accordion-controls">
+                                    <label class="checkbox-container" onclick="event.stopPropagation()">
+                                        <input type="checkbox" class="question-checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="content-inner">
+                                    <h4>Lookup Table (O(1)):</h4>
+                                    <div class="code-example">
+                                        <pre><code>// Precomputed reverse of 0-255
+static const unsigned char table[] = { 0x00, 0x80, ... }; 
+
+unsigned char reverse(unsigned char n) {
+    return table[n];
+}</code></pre>
+                                    </div>
+                                    <h4>Bitwise Operation (O(log bits)):</h4>
+                                    <div class="code-example">
+                                        <pre><code>unsigned char reverse(unsigned char n) {
+    n = (n & 0xF0) >> 4 | (n & 0x0F) << 4;  // Swap nibbles
+    n = (n & 0xCC) >> 2 | (n & 0x33) << 2;  // Swap pairs
+    n = (n & 0xAA) >> 1 | (n & 0x55) << 1;  // Swap bits
+    return n;
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" data-id="q88">
+                            <button class="accordion-btn">
+                                <div class="question-content">
+                                    <span class="question-number">88</span>
+                                    <span class="question-text">Aligned Malloc</span>
+                                    <div class="question-tags">
+                                        <span class="tag">Systems</span>
+                                        <span class="tag">Memory</span>
+                                    </div>
+                                </div>
+                                <div class="accordion-controls">
+                                    <label class="checkbox-container" onclick="event.stopPropagation()">
+                                        <input type="checkbox" class="question-checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="content-inner">
+                                    <h4>Constraint:</h4>
+                                    <p>Allocate memory such that the address is a multiple of `alignment` (power of 2).
+                                    </p>
+                                    <h4>Implementation:</h4>
+                                    <div class="code-example">
+                                        <pre><code>void* aligned_malloc(size_t size, size_t alignment) {
+    // 1. Allocate extra bytes: size + alignment + metadata size
+    void* p1 = malloc(size + alignment + sizeof(void*));
+    if (!p1) return NULL;
+    
+    // 2. Calculate aligned address
+    size_t addr = (size_t)p1 + alignment + sizeof(void*);
+    void* p2 = (void*)(addr - (addr % alignment));
+    
+    // 3. Store original pointer before p2 for free()
+    ((void**)p2)[-1] = p1;
+    
+    return p2;
+}
+
+void aligned_free(void* p2) {
+    void* p1 = ((void**)p2)[-1];
+    free(p1);
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item" data-id="q81">
+                            <button class="accordion-btn">
+                                <div class="question-content">
+                                    <span class="question-number">81</span>
+                                    <span class="question-text">Count Set Bits (Brian Kernighan's Algorithm)</span>
+                                    <div class="question-tags">
+                                        <span class="tag">Bit Manipulation</span>
+                                        <span class="tag">Algorithms</span>
+                                    </div>
+                                </div>
+                                <div class="accordion-controls">
+                                    <label class="checkbox-container" onclick="event.stopPropagation()">
+                                        <input type="checkbox" class="question-checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="content-inner">
+                                    <h4>Algorithm:</h4>
+                                    <div class="code-example">
+                                        <pre><code>int countSetBits(int n) {
     int count = 0;
     while(n) { 
         n &= (n - 1);  // Clear rightmost set bit
@@ -961,11 +1667,11 @@ sv_hex = re.findall(r"\d+'h[0-9A-Fa-f_]+", text)</code></pre>
     }
     return count;
 }</code></pre>
-                            </div>
-                            <h4>How It Works:</h4>
-                            <div class="bit-explanation">
-                                <p>Example: n = 12 (binary: 1100)</p>
-                                <pre>
+                                    </div>
+                                    <h4>How It Works:</h4>
+                                    <div class="bit-explanation">
+                                        <p>Example: n = 12 (binary: 1100)</p>
+                                        <pre>
 Iteration 1:  n = 1100, n-1 = 1011
               n & (n-1) = 1000, count = 1
 
@@ -974,12 +1680,12 @@ Iteration 2:  n = 1000, n-1 = 0111
 
 Result: 2 set bits
                             </pre>
-                            </div>
-                            <h4>Time Complexity:</h4>
-                            <p><strong>O(k)</strong> where k = number of set bits (not O(log n)!)</p>
-                            <h4>Alternative Methods:</h4>
-                            <div class="code-example">
-                                <pre><code>// Lookup table method (fastest for repeated calls)
+                                    </div>
+                                    <h4>Time Complexity:</h4>
+                                    <p><strong>O(k)</strong> where k = number of set bits (not O(log n)!)</p>
+                                    <h4>Alternative Methods:</h4>
+                                    <div class="code-example">
+                                        <pre><code>// Lookup table method (fastest for repeated calls)
 int popcount_lookup[256];  // Pre-computed
 
 // Built-in compiler intrinsic
@@ -992,46 +1698,47 @@ count = (count & 0x33333333) + ((count >> 2) & 0x33333333);
 count = (count & 0x0F0F0F0F) + ((count >> 4) & 0x0F0F0F0F);
 count = (count & 0x00FF00FF) + ((count >> 8) & 0x00FF00FF);
 count = (count & 0x0000FFFF) + ((count >> 16) & 0x0000FFFF);</code></pre>
-                            </div>
-                            <div class="key-insight">
-                                <i class="fas fa-lightbulb"></i>
-                                <strong>Why It's Efficient:</strong> Only iterates once per set bit, not once per total
-                                bit. For sparse bitstreams, this is significantly faster!
+                                    </div>
+                                    <div class="key-insight">
+                                        <i class="fas fa-lightbulb"></i>
+                                        <strong>Why It's Efficient:</strong> Only iterates once per set bit, not once
+                                        per total
+                                        bit. For sparse bitstreams, this is significantly faster!
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="accordion-item" data-id="q84">
-                    <button class="accordion-btn">
-                        <div class="question-content">
-                            <span class="question-number">84</span>
-                            <span class="question-text">Check if Number is Power of 2</span>
-                            <div class="question-tags">
-                                <span class="tag">Bit Tricks</span>
-                                <span class="tag">C/C++</span>
-                            </div>
-                        </div>
-                        <div class="accordion-controls">
-                            <label class="checkbox-container" onclick="event.stopPropagation()">
-                                <input type="checkbox" class="question-checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="content-inner">
-                            <h4>One-Liner Solution:</h4>
-                            <div class="code-example">
-                                <pre><code>bool isPowerOfTwo(int n) {
+                        <div class="accordion-item" data-id="q84">
+                            <button class="accordion-btn">
+                                <div class="question-content">
+                                    <span class="question-number">84</span>
+                                    <span class="question-text">Check if Number is Power of 2</span>
+                                    <div class="question-tags">
+                                        <span class="tag">Bit Tricks</span>
+                                        <span class="tag">C/C++</span>
+                                    </div>
+                                </div>
+                                <div class="accordion-controls">
+                                    <label class="checkbox-container" onclick="event.stopPropagation()">
+                                        <input type="checkbox" class="question-checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="content-inner">
+                                    <h4>One-Liner Solution:</h4>
+                                    <div class="code-example">
+                                        <pre><code>bool isPowerOfTwo(int n) {
     return (n > 0) && ((n & (n - 1)) == 0);
 }</code></pre>
-                            </div>
-                            <h4>Why This Works:</h4>
-                            <div class="bit-explanation">
-                                <p>Powers of 2 have exactly one bit set:</p>
-                                <pre>
+                                    </div>
+                                    <h4>Why This Works:</h4>
+                                    <div class="bit-explanation">
+                                        <p>Powers of 2 have exactly one bit set:</p>
+                                        <pre>
 1   = 0001
 2   = 0010
 4   = 0100
@@ -1046,10 +1753,10 @@ For non-power:   n     = 1010
                  n-1   = 1001
                  n & (n-1) = 1000 (non-zero!)
                             </pre>
-                            </div>
-                            <h4>Related Bit Tricks:</h4>
-                            <div class="code-example">
-                                <pre><code>// Get next power of 2
+                                    </div>
+                                    <h4>Related Bit Tricks:</h4>
+                                    <div class="code-example">
+                                        <pre><code>// Get next power of 2
 int nextPowerOf2(int n) {
     n--;
     n |= n >> 1;
@@ -1069,58 +1776,63 @@ bool isPowerOfFour(int n) {
 int isolateRightmost(int n) {
     return n & (-n);
 }</code></pre>
-                            </div>
-                            <div class="key-insight">
-                                <i class="fas fa-lightbulb"></i>
-                                <strong>Hardware Connection:</strong> This trick is used in cache size validation,
-                                memory alignment checks, and power-of-2 buffer sizing.
+                                    </div>
+                                    <div class="key-insight">
+                                        <i class="fas fa-lightbulb"></i>
+                                        <strong>Hardware Connection:</strong> This trick is used in cache size
+                                        validation,
+                                        memory alignment checks, and power-of-2 buffer sizing.
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="accordion-item" data-id="q87">
-                    <button class="accordion-btn">
-                        <div class="question-content">
-                            <span class="question-number">87</span>
-                            <span class="question-text">The 'volatile' Keyword in C/C++</span>
-                            <div class="question-tags">
-                                <span class="tag">Embedded</span>
-                                <span class="tag">Firmware</span>
-                            </div>
-                        </div>
-                        <div class="accordion-controls">
-                            <label class="checkbox-container" onclick="event.stopPropagation()">
-                                <input type="checkbox" class="question-checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="content-inner">
-                            <h4>Definition:</h4>
-                            <p>Prevents the compiler from optimizing out repeated reads to a variable that might be
-                                changed by hardware outside the program flow.</p>
-                            <h4>When to Use:</h4>
-                            <ul>
-                                <li><strong>Memory-mapped I/O registers</strong> - Hardware can change values</li>
-                                <li><strong>Variables modified by ISRs</strong> - Interrupt handlers update them</li>
-                                <li><strong>Multi-threaded shared variables</strong> - Other threads modify them</li>
-                                <li><strong>Watchdog timers</strong> - Must be accessed regularly</li>
-                            </ul>
-                            <h4>Example Without volatile:</h4>
-                            <div class="code-example">
-                                <pre><code>// BAD: Compiler may optimize this to infinite loop
+                        <div class="accordion-item" data-id="q87">
+                            <button class="accordion-btn">
+                                <div class="question-content">
+                                    <span class="question-number">87</span>
+                                    <span class="question-text">The 'volatile' Keyword in C/C++</span>
+                                    <div class="question-tags">
+                                        <span class="tag">Embedded</span>
+                                        <span class="tag">Firmware</span>
+                                    </div>
+                                </div>
+                                <div class="accordion-controls">
+                                    <label class="checkbox-container" onclick="event.stopPropagation()">
+                                        <input type="checkbox" class="question-checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="content-inner">
+                                    <h4>Definition:</h4>
+                                    <p>Prevents the compiler from optimizing out repeated reads to a variable that might
+                                        be
+                                        changed by hardware outside the program flow.</p>
+                                    <h4>When to Use:</h4>
+                                    <ul>
+                                        <li><strong>Memory-mapped I/O registers</strong> - Hardware can change values
+                                        </li>
+                                        <li><strong>Variables modified by ISRs</strong> - Interrupt handlers update them
+                                        </li>
+                                        <li><strong>Multi-threaded shared variables</strong> - Other threads modify them
+                                        </li>
+                                        <li><strong>Watchdog timers</strong> - Must be accessed regularly</li>
+                                    </ul>
+                                    <h4>Example Without volatile:</h4>
+                                    <div class="code-example">
+                                        <pre><code>// BAD: Compiler may optimize this to infinite loop
 int *status_reg = (int*)0x40000000;
 while (*status_reg == 0) {
     // Compiler thinks: "status_reg never changes in this loop"
     // May optimize to: if (*status_reg == 0) while(1);
 }</code></pre>
-                            </div>
-                            <h4>Example With volatile:</h4>
-                            <div class="code-example">
-                                <pre><code>// GOOD: Compiler always reads from memory
+                                    </div>
+                                    <h4>Example With volatile:</h4>
+                                    <div class="code-example">
+                                        <pre><code>// GOOD: Compiler always reads from memory
 volatile int *status_reg = (volatile int*)0x40000000;
 while (*status_reg == 0) {
     // Compiler generates actual memory read each iteration
@@ -1136,17 +1848,17 @@ void uart_send(char c) {
     }
     UART_DATA = c;
 }</code></pre>
-                            </div>
-                            <h4>Common Misconceptions:</h4>
-                            <div class="warning-box">
-                                <p><strong>❌ volatile does NOT provide atomicity</strong></p>
-                                <p><strong>❌ volatile does NOT provide memory barriers</strong></p>
-                                <p><strong>❌ volatile is NOT a substitute for mutexes</strong></p>
-                                <p><strong>✅ volatile only prevents compiler optimization</strong></p>
-                            </div>
-                            <h4>Correct Multi-threaded Usage:</h4>
-                            <div class="code-example">
-                                <pre><code>// For ISR communication
+                                    </div>
+                                    <h4>Common Misconceptions:</h4>
+                                    <div class="warning-box">
+                                        <p><strong>❌ volatile does NOT provide atomicity</strong></p>
+                                        <p><strong>❌ volatile does NOT provide memory barriers</strong></p>
+                                        <p><strong>❌ volatile is NOT a substitute for mutexes</strong></p>
+                                        <p><strong>✅ volatile only prevents compiler optimization</strong></p>
+                                    </div>
+                                    <h4>Correct Multi-threaded Usage:</h4>
+                                    <div class="code-example">
+                                        <pre><code>// For ISR communication
 volatile bool data_ready = false;
 
 void ISR_handler() {
@@ -1163,20 +1875,115 @@ void main_loop() {
 // For thread safety, use atomics instead
 #include <atomic>
 std::atomic<bool> thread_safe_flag(false);</code></pre>
-                            </div>
-                            <div class="key-insight">
-                                <i class="fas fa-lightbulb"></i>
-                                <strong>Interview Tip:</strong> Always mention that volatile prevents optimization but
-                                doesn't guarantee atomicity or thread safety!
+                                    </div>
+                                    <div class="key-insight">
+                                        <i class="fas fa-lightbulb"></i>
+                                        <strong>Interview Tip:</strong> Always mention that volatile prevents
+                                        optimization but
+                                        doesn't guarantee atomicity or thread safety!
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
         </section>
 
     </div>
+
+    </div>
+    </div>
+    </div>
+    </section>
+
+    <!-- Recommended Resources Section -->
+    <section class="resources-section" id="resources">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-book-reader"></i> Recommended Resources</h2>
+                <div class="section-subtitle">Curated picks for Hardware & Firmware Interviews</div>
+            </div>
+
+            <div class="favorites-grid">
+                <!-- Linear Algebra -->
+                <div class="favorite-card">
+                    <div class="favorite-header">
+                        <div class="favorite-icon"><i class="fas fa-calculator"></i></div>
+                        <div class="favorite-meta">
+                            <div class="favorite-university">MIT Mathematics</div>
+                            <div class="favorite-professor">Gilbert Strang</div>
+                        </div>
+                    </div>
+                    <h3>Linear Algebra</h3>
+                    <p>The definitive guide to understanding matrices, vector spaces, and eigenvalues—foundational for
+                        ML and Signal Processing.</p>
+                    <div class="favorite-topics">
+                        <span class="topic-tag">Matrix Theory</span>
+                        <span class="topic-tag">SVD</span>
+                        <span class="topic-tag">Eigenvectors</span>
+                    </div>
+                    <a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/" target="_blank"
+                        class="favorite-btn">
+                        View Course <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+
+                <!-- Embedded C -->
+                <div class="favorite-card">
+                    <div class="favorite-header">
+                        <div class="favorite-icon"><i class="fas fa-microchip"></i></div>
+                        <div class="favorite-meta">
+                            <div class="favorite-university">Embedded Systems</div>
+                            <div class="favorite-professor">STM32 & FreeRTOS</div>
+                        </div>
+                    </div>
+                    <h3>Embedded C & RTOS</h3>
+                    <p>Master real-time systems with STM32. key resources for concurrency, interrupts, and peripherals.
+                    </p>
+                    <div class="favorite-topics">
+                        <span class="topic-tag">FreeRTOS</span>
+                        <span class="topic-tag">STM32 HAL</span>
+                        <span class="topic-tag">Low Level</span>
+                    </div>
+                    <div class="resource-links" style="margin-top: 15px;">
+                        <a href="https://www.udemy.com/course/mastering-rtos-hands-on-with-freertos-arduino-and-stm32fx/"
+                            target="_blank"
+                            style="color: var(--accent); text-decoration: none; display: block; margin-bottom: 5px;"><i
+                                class="fas fa-video"></i> Mastering RTOS (Udemy)</a>
+                        <a href="https://www.amazon.com/Hands-RTOS-Microcontrollers-real-time-FreeRTOS/dp/1838647080"
+                            target="_blank" style="color: var(--accent); text-decoration: none; display: block;"><i
+                                class="fas fa-book"></i> Hands-On RTOS (Book)</a>
+                    </div>
+                </div>
+
+                <!-- Advanced C++ -->
+                <div class="favorite-card">
+                    <div class="favorite-header">
+                        <div class="favorite-icon"><i class="fas fa-code"></i></div>
+                        <div class="favorite-meta">
+                            <div class="favorite-university">Modern C++</div>
+                            <div class="favorite-professor">Scott Meyers</div>
+                        </div>
+                    </div>
+                    <h3>Advanced C++ Concepts</h3>
+                    <p>Move beyond basics. Understand move semantics, smart pointers, and template metaprogramming.</p>
+                    <div class="favorite-topics">
+                        <span class="topic-tag">C++11/14/17</span>
+                        <span class="topic-tag">STL</span>
+                        <span class="topic-tag">Memory Model</span>
+                    </div>
+                    <div class="resource-links" style="margin-top: 15px;">
+                        <a href="https://www.aristeia.com/books.html" target="_blank"
+                            style="color: var(--accent); text-decoration: none; display: block; margin-bottom: 5px;"><i
+                                class="fas fa-book"></i> Effective Modern C++</a>
+                        <a href="https://isocpp.org/" target="_blank"
+                            style="color: var(--accent); text-decoration: none; display: block;"><i
+                                class="fas fa-globe"></i> ISO C++ FAQ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <div class="footer-content">
@@ -1202,6 +2009,31 @@ std::atomic<bool> thread_safe_flag(false);</code></pre>
             <p>Built with ❤️ for hardware engineers everywhere</p>
         </div>
     </footer>
+
+    <!-- Follow Me Popup -->
+    <div id="followPopup" class="popup-overlay">
+        <div class="popup-content">
+            <button class="close-popup">&times;</button>
+            <div class="popup-header">
+                <div class="author-avatar">
+                    <img src="wolf-avatar.png" alt="Gowshik Murali">
+                </div>
+                <h3>Hey, I'm Gowshik! 👋</h3>
+                <p>I built Silicon Vault to help hardware engineers ace their interviews.</p>
+            </div>
+            <div class="popup-body">
+                <p>If you find this resource helpful, please consider following my work!</p>
+                <div class="popup-actions">
+                    <a href="https://www.linkedin.com/in/gowshik-ram-r/" target="_blank" class="popup-btn linkedin">
+                        <i class="fab fa-linkedin"></i> Follow on LinkedIn
+                    </a>
+                    <a href="https://github.com/mysticaven" target="_blank" class="popup-btn github">
+                        <i class="fab fa-github"></i> Star on GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 

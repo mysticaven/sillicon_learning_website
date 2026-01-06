@@ -1484,3 +1484,137 @@ footer {
         padding: 20px 15px;
     }
 }
+
+.resource-links a:hover {
+    text-decoration: underline !important;
+    opacity: 0.8;
+}
+
+/* Follow Popup */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.popup-overlay.show {
+    display: flex;
+}
+
+.popup-content {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    border-radius: 16px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-popup:hover {
+    color: var(--text);
+}
+
+.author-avatar img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    margin-bottom: 1rem;
+    object-fit: cover;
+}
+
+.popup-header h3 {
+    margin: 0.5rem 0;
+    color: var(--text);
+}
+
+.popup-header p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.popup-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.popup-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.popup-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.popup-btn.linkedin {
+    background: #0077b5;
+    color: white;
+}
+
+.popup-btn.github {
+    background: #333;
+    color: white;
+}
+
+[data-theme="dark"] .popup-btn.github {
+    background: #f0f6fc;
+    color: #333;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

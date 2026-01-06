@@ -12,6 +12,7 @@ class SiliconVault {
         this.setupSearch();
         this.setupProgressTracking();
         this.setupThemeToggle();
+        this.setupPopup();
         this.updateAllProgress();
         this.setupSmoothScroll();
     }
@@ -152,10 +153,15 @@ class SiliconVault {
         this.updateProgressCircle(overallPercentage);
 
         // Update category progress
-        this.updateCategoryProgress('logic', 5);
-        this.updateCategoryProgress('arch', 3);
-        this.updateCategoryProgress('python', 2);
-        this.updateCategoryProgress('programming', 3);
+        const logicCount = document.querySelectorAll('#logic .accordion-item').length;
+        const archCount = document.querySelectorAll('#arch .accordion-item').length;
+        const pythonCount = document.querySelectorAll('#coding .accordion-item').length;
+        const progCount = document.querySelectorAll('[data-category="programming"] .accordion-item').length;
+
+        this.updateCategoryProgress('logic', logicCount);
+        this.updateCategoryProgress('arch', archCount);
+        this.updateCategoryProgress('python', pythonCount);
+        this.updateCategoryProgress('programming', progCount);
     }
 
     updateProgressCircle(percentage) {
@@ -282,7 +288,41 @@ class SiliconVault {
             });
         });
     }
+
+    // Follow Me Popup
+    setupPopup() {
+        const popup = document.getElementById('followPopup');
+        const closeBtn = document.querySelector('.close-popup');
+
+        // Use sessionStorage so it shows once per browsing session (tab/window)
+        // If you want it on EVERY page load, remove the storage check entirely. 
+        // Assuming "visiting website" means once per session to avoid checking it every refresh.
+        const hasSeenSession = sessionStorage.getItem('siliconVaultPopupSeen');
+
+        if (!hasSeenSession && popup) {
+            // Show after 2 seconds
+            setTimeout(() => {
+                popup.classList.add('show');
+            }, 2000);
+        }
+
+        if (popup && closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                popup.classList.remove('show');
+                sessionStorage.setItem('siliconVaultPopupSeen', 'true');
+            });
+
+            // Close when clicking outside
+            popup.addEventListener('click', (e) => {
+                if (e.target === popup) {
+                    popup.classList.remove('show');
+                    sessionStorage.setItem('siliconVaultPopupSeen', 'true');
+                }
+            });
+        }
+    }
 }
+
 
 // Keyboard shortcuts
 document.addEventListener('keydown', (e) => {
