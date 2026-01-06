@@ -16,6 +16,7 @@ class SiliconVault {
         this.updateAllProgress();
         this.setupSmoothScroll();
         this.setupRoadmap();
+        this.updatePlacementYear();
     }
 
     // Accordion functionality
@@ -341,6 +342,28 @@ class SiliconVault {
                 card.classList.toggle('active');
             });
         });
+    }
+
+    // Auto-update placement year
+    updatePlacementYear() {
+        const yearElement = document.getElementById('placement-year');
+        if (yearElement) {
+            const currentDate = new Date();
+            const currentYear = currentDate.getFullYear();
+            const currentMonth = currentDate.getMonth(); // 0-11
+
+            // Placement season typically runs from July (month 6) to June
+            // If current month is July or after, show current-next year
+            // Otherwise show previous-current year
+            let placementYear;
+            if (currentMonth >= 6) {
+                placementYear = `${currentYear}-${currentYear + 1}`;
+            } else {
+                placementYear = `${currentYear - 1}-${currentYear}`;
+            }
+
+            yearElement.textContent = placementYear;
+        }
     }
 }
 
