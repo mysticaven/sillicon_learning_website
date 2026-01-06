@@ -8,16 +8,20 @@ class SiliconVault {
     }
 
     init() {
-        this.setupAccordion();
-        this.setupSearch();
-        this.setupProgressTracking();
-        this.setupThemeToggle();
-        this.setupPopup();
-        this.updateAllProgress();
-        this.setupSmoothScroll();
-        this.setupRoadmap();
-        this.updatePlacementYear();
-        this.setupVisitorStats();
+        try {
+            this.setupAccordion();
+            this.setupSearch();
+            this.setupProgressTracking();
+            this.setupThemeToggle();
+            this.setupPopup();
+            this.updateAllProgress();
+            this.setupSmoothScroll();
+            this.setupRoadmap();
+            this.updatePlacementYear();
+            this.setupVisitorStats();
+        } catch (error) {
+            console.error('Initialization error:', error);
+        }
     }
 
     // Accordion functionality
@@ -158,7 +162,7 @@ class SiliconVault {
         // Update category progress
         const logicCount = document.querySelectorAll('#logic .accordion-item').length;
         const archCount = document.querySelectorAll('#arch .accordion-item').length;
-        const pythonCount = document.querySelectorAll('#coding .accordion-item').length;
+        const pythonCount = document.querySelectorAll('[data-category="python"] .accordion-item, #coding .accordion-item').length;
         const progCount = document.querySelectorAll('[data-category="programming"] .accordion-item').length;
 
         this.updateCategoryProgress('logic', logicCount);
@@ -334,13 +338,31 @@ class SiliconVault {
                 // Prevent closing if clicking a link
                 if (e.target.tagName === 'A' || e.target.closest('a')) return;
 
-                // Close other cards
+                const details = card.querySelector('.phase-details');
+                const icon = card.querySelector('.expand-icon');
+                const isActive = card.classList.contains('active');
+
+                // Close other cards for a clean look
                 cards.forEach(c => {
-                    if (c !== card) c.classList.remove('active');
+                    if (c !== card) {
+                        c.classList.remove('active');
+                        const otherDetails = c.querySelector('.phase-details');
+                        if (otherDetails) otherDetails.style.maxHeight = null;
+                        const otherIcon = c.querySelector('.expand-icon');
+                        if (otherIcon) otherIcon.style.transform = "rotate(0deg)";
+                    }
                 });
 
                 // Toggle current
-                card.classList.toggle('active');
+                if (isActive) {
+                    card.classList.remove('active');
+                    if (details) details.style.maxHeight = null;
+                    if (icon) icon.style.transform = "rotate(0deg)";
+                } else {
+                    card.classList.add('active');
+                    if (details) details.style.maxHeight = details.scrollHeight + "px";
+                    if (icon) icon.style.transform = "rotate(180deg)";
+                }
             });
         });
     }

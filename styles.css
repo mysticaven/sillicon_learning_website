@@ -876,7 +876,6 @@ nav {
 }
 
 .phase-card.active .expand-icon {
-    transform: rotate(180deg);
     color: var(--accent);
 }
 
@@ -897,8 +896,6 @@ nav {
 }
 
 .phase-card.active .phase-details {
-    max-height: 500px;
-    /* Arbitrary large height */
     opacity: 1;
     margin-top: 20px;
     padding-top: 20px;
