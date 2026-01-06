@@ -134,143 +134,224 @@
             </div>
         </section>
 
+        <!-- Mastery Roadmap -->
         <section id="roadmap" class="roadmap-section">
             <div class="section-header">
-                <h2><i class="fas fa-map-signs"></i> Interactive Learning Roadmap</h2>
-                <p class="section-subtitle">Click on any phase to see detailed expansion. Follow this path to mastery.
-                </p>
+                <h2><i class="fas fa-road"></i> Mastery Roadmap: NTHU & 1nm VLSI</h2>
+                <div class="section-subtitle">
+                    The golden path to cutting-edge architecture. Industry-standard foundations used by engineers at
+                    TSMC and Apple.
+                </div>
             </div>
 
             <div class="timeline">
                 <div class="timeline-line"></div>
 
-                <!-- Phase 1 -->
+                <!-- Phase 0: Math Foundation -->
                 <div class="timeline-item left">
                     <div class="timeline-dot"></div>
-                    <div class="phase-card interactive" data-phase="1">
+                    <div class="phase-card interactive" data-phase="0">
                         <div class="phase-header">
-                            <div class="phase-number">01</div>
-                            <span class="phase-tag">Foundation</span>
-                            <h3>Circuits & Logic</h3>
+                            <div class="phase-number">00</div>
+                            <span class="phase-tag">Mathematics & Logic</span>
+                            <h3>Foundation Zero</h3>
                             <i class="fas fa-chevron-down expand-icon"></i>
                         </div>
                         <div class="phase-preview">
-                            <p>Master MOSFETs, models, and circuit analysis.</p>
+                            <p>Linear Algebra and Digital Fundamentals.</p>
                         </div>
                         <div class="phase-details">
-                            <p>Deep dive into analog properties of digital circuits. Understand lumped element models,
-                                parasitic capacitance/inductance, and signal integrity basics.</p>
+                            <p>Before touching a circuit, master the math that powers ML and Signal Processing.</p>
                             <div class="phase-topics">
-                                <span class="topic-tag">MOSFETs</span>
-                                <span class="topic-tag">Parasitics</span>
-                                <span class="topic-tag">RC Delays</span>
+                                <span class="topic-tag">Matrix Theory</span>
+                                <span class="topic-tag">Eigenvectors</span>
+                                <span class="topic-tag">Boolean Logic</span>
                             </div>
                             <div class="phase-resources">
-                                <h5>Start Here:</h5>
-                                <a href="https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/"
-                                    target="_blank" class="video-btn">
-                                    <i class="fas fa-university"></i> MIT 6.002
+                                <h5>Required Viewing:</h5>
+                                <a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/" target="_blank"
+                                    class="video-btn">
+                                    <i class="fas fa-university"></i> Gilbert Strang (MIT)
                                 </a>
+                                <h5 style="margin-top: 15px;">Reference Book:</h5>
+                                <div class="book-ref">
+                                    <i class="fas fa-book"></i> <strong>Digital Fundamentals</strong> by Thomas L. Floyd
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Phase 2 -->
+                <!-- Phase 1: Circuits -->
                 <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="phase-card interactive gold" data-phase="1">
+                        <div class="phase-header">
+                            <div class="phase-number">01</div>
+                            <span class="phase-tag">Hardware Core</span>
+                            <h3>Circuits & Analog</h3>
+                            <i class="fas fa-chevron-down expand-icon"></i>
+                        </div>
+                        <div class="phase-preview">
+                            <p>Caltech Masterclasses vs MIT.</p>
+                        </div>
+                        <div class="phase-details">
+                            <p><strong>Crucial Advice:</strong> Start with Prof. Ali Hajimiri. His intuition involves
+                                solid-state physics essential for 1nm nodes.</p>
+                            <div class="warning-box"
+                                style="margin: 10px 0; padding: 10px; background: rgba(255, 99, 71, 0.1); border-left: 3px solid #ff6347; font-size: 0.9rem;">
+                                <i class="fas fa-exclamation-triangle"></i> <strong>Note on MIT 6.002:</strong> Video
+                                quality is outdated. Use only if necessary. Hajimiri is superior for modern
+                                understanding.
+                            </div>
+                            <div class="phase-topics">
+                                <span class="topic-tag">MOSFET Physics</span>
+                                <span class="topic-tag">Analog Design</span>
+                                <span class="topic-tag">Power Electronics</span>
+                            </div>
+                            <div class="phase-resources">
+                                <h5>Primary (Highly Recommended):</h5>
+                                <a href="https://www.youtube.com/watch?v=Ho0thejpuoY&list=PLc7Gz02Znph_HU1I9STgC4Nv0aG_jdb8Z&index=9"
+                                    target="_blank" class="video-btn">
+                                    <i class="fas fa-star"></i> Hajimiri: Intro Circuits
+                                </a>
+                                <a href="https://www.youtube.com/watch?v=403CnTftB4M&list=PLc7Gz02Znph-c2-ssFpRrzYwbzplXfXUT"
+                                    target="_blank" class="video-btn">
+                                    <i class="fas fa-star"></i> Hajimiri: Analog (2019)
+                                </a>
+                                <h5 style="margin-top: 15px;">Supplementary:</h5>
+                                <a href="https://www.youtube.com/playlist?list=PLBwZJtDChBFB2RqJ6N5wQEINrWDo_RLKN"
+                                    target="_blank" class="video-btn secondary">Power Electronics</a>
+                                <a href="https://www.youtube.com/playlist?list=PLZ4m5Y8l0z0v1Yh3yxZBQZ35jkNltZSv5"
+                                    target="_blank" class="video-btn secondary">Analog Electronics</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 2: Architecture & Embedded -->
+                <div class="timeline-item left">
                     <div class="timeline-dot"></div>
                     <div class="phase-card interactive" data-phase="2">
                         <div class="phase-header">
                             <div class="phase-number">02</div>
-                            <span class="phase-tag">Core Architecture</span>
-                            <h3>Computer Arch</h3>
+                            <span class="phase-tag">System & Architecture</span>
+                            <h3>Embedded & RTOS</h3>
                             <i class="fas fa-chevron-down expand-icon"></i>
                         </div>
                         <div class="phase-preview">
-                            <p>The "Gold Standard" by Prof. Onur Mutlu.</p>
+                            <p>From Registers to Real-Time Systems.</p>
                         </div>
                         <div class="phase-details">
-                            <p>Comprehensive study of ISA, pipelining, out-of-order execution, branch prediction, and
-                                memory hierarchy (Cache/DRAM). Essential for CPU/SoC design.</p>
+                            <p><strong>Miro Samek</strong> is mandatory for understanding how software interacts with
+                                hardware registers. <strong>Phil's Lab</strong> bridges code with PCB design.</p>
                             <div class="phase-topics">
-                                <span class="topic-tag">Pipelining</span>
-                                <span class="topic-tag">Cache Coherence</span>
-                                <span class="topic-tag">Virtual Memory</span>
+                                <span class="topic-tag">RTOS Architecture</span>
+                                <span class="topic-tag">STM32 HAL/LL</span>
+                                <span class="topic-tag">DSP Filters</span>
                             </div>
                             <div class="phase-resources">
-                                <h5>Start Here:</h5>
-                                <a href="https://www.youtube.com/playlist?list=PL5Q2soXY2Zi9Eo29LMgKVcaydS7V1zZW3"
+                                <h5>The Architecture Foundation:</h5>
+                                <a href="https://www.youtube.com/playlist?list=PLPW88CEw1t6mbeRE_D7Fp2_N-G_A9A_3I"
                                     target="_blank" class="video-btn">
-                                    <i class="fab fa-youtube"></i> Mutlu Lectures
+                                    <i class="fas fa-microchip"></i> Miro Samek (RTOS)
                                 </a>
+                                <h5 style="margin-top: 15px;">The Implementation (Phil's Lab):</h5>
+                                <div style="display: flex; flex-direction: column; gap: 8px;">
+                                    <a href="https://www.youtube.com/playlist?list=PLXSyc11qLa1a4Tqbz228dPZfMrs-KRpzA"
+                                        target="_blank" class="video-btn secondary">STM32 Firmware</a>
+                                    <a href="https://www.youtube.com/playlist?list=PLXSyc11qLa1YhVCZ5xWPuPsE5MkgEy5TF"
+                                        target="_blank" class="video-btn secondary">Hardware Design (PCB)</a>
+                                    <a href="https://www.youtube.com/playlist?list=PLXSyc11qLa1ZCn0JCnaaXOWN6Z46rK9jd"
+                                        target="_blank" class="video-btn secondary">DSP Implementation</a>
+                                </div>
+                                <h5 style="margin-top: 15px;">Additional Courses:</h5>
+                                <a href="https://www.youtube.com/playlist?list=PLWPirh4EWFpE38Y7QDJ22OaT7A-dKUcmd"
+                                    target="_blank" class="video-btn secondary">Embedded Systems Playlist</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Phase 3 -->
-                <div class="timeline-item left">
-                    <div class="timeline-dot"></div>
-                    <div class="phase-card interactive gold" data-phase="3">
-                        <div class="phase-header">
-                            <div class="phase-number">03</div>
-                            <span class="phase-tag">DSA Mastery</span>
-                            <h3>Algorithms & C++</h3>
-                            <i class="fas fa-chevron-down expand-icon"></i>
-                        </div>
-                        <div class="phase-preview">
-                            <p>Graph theory, DP, and Memory Management.</p>
-                        </div>
-                        <div class="phase-details">
-                            <p>Critical for Firmware and Verification. Focus on bit manipulation, pointers, and graph
-                                algorithms (BFS/DFS) for circuit routing problems.</p>
-                            <div class="phase-topics">
-                                <span class="topic-tag">Graph Theory</span>
-                                <span class="topic-tag">Dynamic Programming</span>
-                                <span class="topic-tag">Memory Layout</span>
-                            </div>
-                            <div class="phase-resources">
-                                <h5>Primary Resource:</h5>
-                                <a href="https://www.youtube.com/watch?v=0bHoB32fuj0&list=PLgUwDviBIf0oF6QL8m22w1hIDC1vJ_BHz"
-                                    target="_blank" class="video-btn">
-                                    <i class="fab fa-youtube"></i> Striver's Graph Series
-                                </a>
-                                <a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/"
-                                    target="_blank" class="video-btn secondary">
-                                    <i class="fas fa-university"></i> MIT 6.006
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Phase 4 -->
+                <!-- Phase 3: Software & Performance -->
                 <div class="timeline-item right">
                     <div class="timeline-dot"></div>
-                    <div class="phase-card interactive" data-phase="4">
+                    <div class="phase-card interactive" data-phase="3">
                         <div class="phase-header">
-                            <div class="phase-number">04</div>
-                            <span class="phase-tag">Hardware Design</span>
-                            <h3>ASIC & SoC</h3>
+                            <div class="phase-number">03</div>
+                            <span class="phase-tag">Performance Coding</span>
+                            <h3>Advanced C++ & DSA</h3>
                             <i class="fas fa-chevron-down expand-icon"></i>
                         </div>
                         <div class="phase-preview">
-                            <p>Digital IC Design and Timing Analysis.</p>
+                            <p>Memory Management, Drivers, and Algorithms.</p>
                         </div>
                         <div class="phase-details">
-                            <p>Real-world chip design: Verilog/SystemVerilog, Synthesis, Place & Route, and Static
-                                Timing Analysis (setup/hold).</p>
+                            <p><strong>The Cherno</strong> is legendary for memory/pointers—Taiwanese professors will
+                                grill you on this. <strong>Kunal Kushwaha</strong> is your best bet for LeetCode
+                                "approach".</p>
                             <div class="phase-topics">
-                                <span class="topic-tag">RTL Design</span>
-                                <span class="topic-tag">STA</span>
-                                <span class="topic-tag">Physical Design</span>
+                                <span class="topic-tag">Smart Pointers</span>
+                                <span class="topic-tag">Linux Kernel</span>
+                                <span class="topic-tag">CUDA</span>
                             </div>
                             <div class="phase-resources">
-                                <h5>Start Here:</h5>
-                                <a href="https://www.youtube.com/playlist?list=PLm2S_eJatpSPh_A_U-VatpSno2XFf9u_6"
+                                <h5>High-Performance C++:</h5>
+                                <a href="https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb"
                                     target="_blank" class="video-btn">
-                                    <i class="fas fa-bolt"></i> Berkeley EECS 151
+                                    <i class="fab fa-cuttlefish"></i> The Cherno Series
                                 </a>
+                                <h5 style="margin-top: 15px;">DSA & Logic:</h5>
+                                <a href="https://www.youtube.com/playlist?list=PL9gnSGHSqcnr_DxHsP7AW9ftq0AtAyYqJ"
+                                    target="_blank" class="video-btn">
+                                    <i class="fas fa-code"></i> Kunal Kushwaha
+                                </a>
+                                <h5 style="margin-top: 15px;">Specialized Skills:</h5>
+                                <a href="https://www.youtube.com/watch?v=iSiyDHobXHA" target="_blank"
+                                    class="video-btn secondary">Linux Drivers</a>
+                                <a href="https://www.youtube.com/watch?v=86FAWCzIe_4" target="_blank"
+                                    class="video-btn secondary">CUDA Programming</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 4: The Vault Library -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="phase-card interactive gold" data-phase="4">
+                        <div class="phase-header">
+                            <div class="phase-number">04</div>
+                            <span class="phase-tag">The Vault</span>
+                            <h3>Reference Library</h3>
+                            <i class="fas fa-chevron-down expand-icon"></i>
+                        </div>
+                        <div class="phase-preview">
+                            <p>Books, Repos, and Notebooks.</p>
+                        </div>
+                        <div class="phase-details">
+                            <p>Essential reading and code repositories to support your journey.</p>
+                            <div class="phase-resources">
+                                <h5>Repository:</h5>
+                                <a href="https://github.com/mysticaven/Resource-for-Electronics" target="_blank"
+                                    class="video-btn">
+                                    <i class="fab fa-github"></i> Electronics Resources Repo
+                                </a>
+                                <a href="https://notebooklm.google.com/notebook/94486c71-ced6-4931-b3e5-88b70e77a9bc"
+                                    target="_blank" class="video-btn secondary">
+                                    <i class="fas fa-sticky-note"></i> My Notebook
+                                </a>
+                                <h5 style="margin-top: 15px;">Sacred Texts:</h5>
+                                <ul style="list-style: none; padding: 0; font-size: 0.9rem; color: var(--text-dim);">
+                                    <li style="margin-bottom: 8px;"><i class="fas fa-book"
+                                            style="color: var(--accent);"></i> <strong>The Art of Electronics</strong>
+                                        (Horowitz/Hill)</li>
+                                    <li style="margin-bottom: 8px;"><i class="fas fa-book"
+                                            style="color: var(--accent);"></i> <strong>Microelectronic Circuits</strong>
+                                        (Sedra/Smith)</li>
+                                    <li><i class="fas fa-book" style="color: var(--accent);"></i> <strong>Electric
+                                            Machinery</strong> (Fitzgerald)</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
