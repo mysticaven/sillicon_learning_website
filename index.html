@@ -134,77 +134,148 @@
             </div>
         </section>
 
-        <!-- Roadmap -->
         <section id="roadmap" class="roadmap-section">
             <div class="section-header">
-                <h2><i class="fas fa-map-signs"></i> 4-Phase Learning Roadmap</h2>
-                <p class="section-subtitle">Follow this structured path to hardware engineering mastery</p>
+                <h2><i class="fas fa-map-signs"></i> Interactive Learning Roadmap</h2>
+                <p class="section-subtitle">Click on any phase to see detailed expansion. Follow this path to mastery.
+                </p>
             </div>
-            <div class="phase-grid">
-                <div class="phase-card" data-phase="1">
-                    <div class="phase-number">01</div>
-                    <span class="phase-tag">Foundation</span>
-                    <h3>Circuits & Logic</h3>
-                    <p>Master MOSFETs, Lumped Element Models, and parasitic signals. Build a solid foundation in analog
-                        and digital circuits.</p>
-                    <div class="phase-topics">
-                        <span class="topic-tag">MOSFETs</span>
-                        <span class="topic-tag">Parasitic Signals</span>
-                        <span class="topic-tag">Circuit Analysis</span>
+
+            <div class="timeline">
+                <div class="timeline-line"></div>
+
+                <!-- Phase 1 -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="phase-card interactive" data-phase="1">
+                        <div class="phase-header">
+                            <div class="phase-number">01</div>
+                            <span class="phase-tag">Foundation</span>
+                            <h3>Circuits & Logic</h3>
+                            <i class="fas fa-chevron-down expand-icon"></i>
+                        </div>
+                        <div class="phase-preview">
+                            <p>Master MOSFETs, models, and circuit analysis.</p>
+                        </div>
+                        <div class="phase-details">
+                            <p>Deep dive into analog properties of digital circuits. Understand lumped element models,
+                                parasitic capacitance/inductance, and signal integrity basics.</p>
+                            <div class="phase-topics">
+                                <span class="topic-tag">MOSFETs</span>
+                                <span class="topic-tag">Parasitics</span>
+                                <span class="topic-tag">RC Delays</span>
+                            </div>
+                            <div class="phase-resources">
+                                <h5>Start Here:</h5>
+                                <a href="https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/"
+                                    target="_blank" class="video-btn">
+                                    <i class="fas fa-university"></i> MIT 6.002
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <a href="https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/" target="_blank"
-                        class="video-btn">
-                        <i class="fab fa-youtube"></i> MIT 6.002
-                    </a>
                 </div>
-                <div class="phase-card" data-phase="2">
-                    <div class="phase-number">02</div>
-                    <span class="phase-tag">Core Knowledge</span>
-                    <h3>Computer Architecture</h3>
-                    <p>The "Gold Standard" course by Professor Onur Mutlu. Deep dive into CPU design, memory
-                        hierarchies, and performance optimization.</p>
-                    <div class="phase-topics">
-                        <span class="topic-tag">Pipeline Design</span>
-                        <span class="topic-tag">Cache Coherence</span>
-                        <span class="topic-tag">Memory Systems</span>
+
+                <!-- Phase 2 -->
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="phase-card interactive" data-phase="2">
+                        <div class="phase-header">
+                            <div class="phase-number">02</div>
+                            <span class="phase-tag">Core Architecture</span>
+                            <h3>Computer Arch</h3>
+                            <i class="fas fa-chevron-down expand-icon"></i>
+                        </div>
+                        <div class="phase-preview">
+                            <p>The "Gold Standard" by Prof. Onur Mutlu.</p>
+                        </div>
+                        <div class="phase-details">
+                            <p>Comprehensive study of ISA, pipelining, out-of-order execution, branch prediction, and
+                                memory hierarchy (Cache/DRAM). Essential for CPU/SoC design.</p>
+                            <div class="phase-topics">
+                                <span class="topic-tag">Pipelining</span>
+                                <span class="topic-tag">Cache Coherence</span>
+                                <span class="topic-tag">Virtual Memory</span>
+                            </div>
+                            <div class="phase-resources">
+                                <h5>Start Here:</h5>
+                                <a href="https://www.youtube.com/playlist?list=PL5Q2soXY2Zi9Eo29LMgKVcaydS7V1zZW3"
+                                    target="_blank" class="video-btn">
+                                    <i class="fab fa-youtube"></i> Mutlu Lectures
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <a href="https://www.youtube.com/playlist?list=PL5Q2soXY2Zi9Eo29LMgKVcaydS7V1zZW3" target="_blank"
-                        class="video-btn">
-                        <i class="fab fa-youtube"></i> Mutlu Playlist
-                    </a>
                 </div>
-                <div class="phase-card gold" data-phase="3">
-                    <div class="phase-number">03</div>
-                    <span class="phase-tag">Algorithm Mastery</span>
-                    <h3>DSA & C++</h3>
-                    <p>Memory management, pointers, and algorithmic efficiency. Essential for firmware and embedded
-                        systems development.</p>
-                    <div class="phase-topics">
-                        <span class="topic-tag">Pointers</span>
-                        <span class="topic-tag">Big O Notation</span>
-                        <span class="topic-tag">Data Structures</span>
+
+                <!-- Phase 3 -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="phase-card interactive gold" data-phase="3">
+                        <div class="phase-header">
+                            <div class="phase-number">03</div>
+                            <span class="phase-tag">DSA Mastery</span>
+                            <h3>Algorithms & C++</h3>
+                            <i class="fas fa-chevron-down expand-icon"></i>
+                        </div>
+                        <div class="phase-preview">
+                            <p>Graph theory, DP, and Memory Management.</p>
+                        </div>
+                        <div class="phase-details">
+                            <p>Critical for Firmware and Verification. Focus on bit manipulation, pointers, and graph
+                                algorithms (BFS/DFS) for circuit routing problems.</p>
+                            <div class="phase-topics">
+                                <span class="topic-tag">Graph Theory</span>
+                                <span class="topic-tag">Dynamic Programming</span>
+                                <span class="topic-tag">Memory Layout</span>
+                            </div>
+                            <div class="phase-resources">
+                                <h5>Primary Resource:</h5>
+                                <a href="https://www.youtube.com/watch?v=0bHoB32fuj0&list=PLgUwDviBIf0oF6QL8m22w1hIDC1vJ_BHz"
+                                    target="_blank" class="video-btn">
+                                    <i class="fab fa-youtube"></i> Striver's Graph Series
+                                </a>
+                                <a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/"
+                                    target="_blank" class="video-btn secondary">
+                                    <i class="fas fa-university"></i> MIT 6.006
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/" target="_blank"
-                        class="video-btn">
-                        <i class="fas fa-code"></i> MIT 6.006
-                    </a>
                 </div>
-                <div class="phase-card" data-phase="4">
-                    <div class="phase-number">04</div>
-                    <span class="phase-tag">Advanced</span>
-                    <h3>ASIC/SoC Design</h3>
-                    <p>Digital Design & ICs. Understanding Area, Power, and Timing (APT) trade-offs in modern chip
-                        design.</p>
-                    <div class="phase-topics">
-                        <span class="topic-tag">RTL Design</span>
-                        <span class="topic-tag">Timing Analysis</span>
-                        <span class="topic-tag">Power Optimization</span>
+
+                <!-- Phase 4 -->
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="phase-card interactive" data-phase="4">
+                        <div class="phase-header">
+                            <div class="phase-number">04</div>
+                            <span class="phase-tag">Hardware Design</span>
+                            <h3>ASIC & SoC</h3>
+                            <i class="fas fa-chevron-down expand-icon"></i>
+                        </div>
+                        <div class="phase-preview">
+                            <p>Digital IC Design and Timing Analysis.</p>
+                        </div>
+                        <div class="phase-details">
+                            <p>Real-world chip design: Verilog/SystemVerilog, Synthesis, Place & Route, and Static
+                                Timing Analysis (setup/hold).</p>
+                            <div class="phase-topics">
+                                <span class="topic-tag">RTL Design</span>
+                                <span class="topic-tag">STA</span>
+                                <span class="topic-tag">Physical Design</span>
+                            </div>
+                            <div class="phase-resources">
+                                <h5>Start Here:</h5>
+                                <a href="https://www.youtube.com/playlist?list=PLm2S_eJatpSPh_A_U-VatpSno2XFf9u_6"
+                                    target="_blank" class="video-btn">
+                                    <i class="fas fa-bolt"></i> Berkeley EECS 151
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <a href="https://www.youtube.com/playlist?list=PLm2S_eJatpSPh_A_U-VatpSno2XFf9u_6" target="_blank"
-                        class="video-btn">
-                        <i class="fas fa-bolt"></i> Berkeley EECS 151
-                    </a>
                 </div>
+
             </div>
         </section>
 
@@ -1896,91 +1967,200 @@ std::atomic<bool> thread_safe_flag(false);</code></pre>
     </div>
     </section>
 
-    <!-- Recommended Resources Section -->
+    <!-- Comprehensive Resources Section -->
     <section class="resources-section" id="resources">
         <div class="container">
             <div class="section-header">
-                <h2><i class="fas fa-book-reader"></i> Recommended Resources</h2>
-                <div class="section-subtitle">Curated picks for Hardware & Firmware Interviews</div>
+                <h2><i class="fas fa-book-reader"></i> Resource Library</h2>
+                <div class="section-subtitle">Curated collection of courses, books, and notes.</div>
             </div>
 
+            <!-- Master Repositories -->
+            <div class="repo-highlight"
+                style="background: linear-gradient(135deg, var(--card) 0%, rgba(59, 130, 246, 0.1) 100%); padding: 30px; border-radius: 16px; border: 1px solid var(--accent); margin-bottom: 40px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between;">
+                <div>
+                    <h3 style="margin: 0 0 10px 0; color: var(--text);"><i class="fab fa-github"></i> Silicon Vault
+                        Master Repository</h3>
+                    <p style="margin: 0; color: var(--text-dim);">Access the complete collection of materials and code
+                        samples.</p>
+                </div>
+                <div style="display: flex; gap: 15px;">
+                    <a href="https://github.com/mysticaven/Resource-for-Electronics" target="_blank" class="video-btn"
+                        style="background: var(--accent); color: white;">
+                        <i class="fas fa-external-link-alt"></i> Open Repository
+                    </a>
+                    <a href="https://notebooklm.google.com/notebook/94486c71-ced6-4931-b3e5-88b70e77a9bc"
+                        target="_blank" class="video-btn">
+                        <i class="fas fa-sticky-note"></i> My Notebook
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video Courses -->
+            <h3 class="subsection-title"
+                style="margin-bottom: 25px; color: var(--text); border-left: 4px solid var(--accent); padding-left: 15px;">
+                Essential Video Courses</h3>
             <div class="favorites-grid">
-                <!-- Linear Algebra -->
+
+                <!-- Power Electronics -->
                 <div class="favorite-card">
                     <div class="favorite-header">
-                        <div class="favorite-icon"><i class="fas fa-calculator"></i></div>
+                        <div class="favorite-icon"><i class="fas fa-bolt"></i></div>
                         <div class="favorite-meta">
-                            <div class="favorite-university">MIT Mathematics</div>
-                            <div class="favorite-professor">Gilbert Strang</div>
+                            <div class="favorite-university">Power Electronics</div>
+                            <div class="favorite-professor">Comprehensive Playlist</div>
                         </div>
                     </div>
-                    <h3>Linear Algebra</h3>
-                    <p>The definitive guide to understanding matrices, vector spaces, and eigenvalues—foundational for
-                        ML and Signal Processing.</p>
-                    <div class="favorite-topics">
-                        <span class="topic-tag">Matrix Theory</span>
-                        <span class="topic-tag">SVD</span>
-                        <span class="topic-tag">Eigenvectors</span>
-                    </div>
-                    <a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/" target="_blank"
+                    <h3>Power Electronics</h3>
+                    <p>Converters, Inverters, and Power Systems analysis and design.</p>
+                    <a href="https://www.youtube.com/playlist?list=PLBwZJtDChBFB2RqJ6N5wQEINrWDo_RLKN" target="_blank"
                         class="favorite-btn">
-                        View Course <i class="fas fa-external-link-alt"></i>
+                        View Playlist <i class="fas fa-play-circle"></i>
                     </a>
                 </div>
 
-                <!-- Embedded C -->
+                <!-- Analog Electronics -->
+                <div class="favorite-card">
+                    <div class="favorite-header">
+                        <div class="favorite-icon"><i class="fas fa-wave-square"></i></div>
+                        <div class="favorite-meta">
+                            <div class="favorite-university">Analog Circuits</div>
+                            <div class="favorite-professor">Fundamental Theory</div>
+                        </div>
+                    </div>
+                    <h3>Analog Electronics</h3>
+                    <p>Deep dive into diodes, BJTs, MOSFETs, and op-amp circuits.</p>
+                    <a href="https://www.youtube.com/playlist?list=PLZ4m5Y8l0z0v1Yh3yxZBQZ35jkNltZSv5" target="_blank"
+                        class="favorite-btn">
+                        View Playlist <i class="fas fa-play-circle"></i>
+                    </a>
+                </div>
+
+                <!-- Embedded Systems -->
                 <div class="favorite-card">
                     <div class="favorite-header">
                         <div class="favorite-icon"><i class="fas fa-microchip"></i></div>
                         <div class="favorite-meta">
-                            <div class="favorite-university">Embedded Systems</div>
-                            <div class="favorite-professor">STM32 & FreeRTOS</div>
+                            <div class="favorite-university">Embedded</div>
+                            <div class="favorite-professor">System Design</div>
                         </div>
                     </div>
-                    <h3>Embedded C & RTOS</h3>
-                    <p>Master real-time systems with STM32. key resources for concurrency, interrupts, and peripherals.
-                    </p>
-                    <div class="favorite-topics">
-                        <span class="topic-tag">FreeRTOS</span>
-                        <span class="topic-tag">STM32 HAL</span>
-                        <span class="topic-tag">Low Level</span>
+                    <h3>Embedded Systems</h3>
+                    <p>Microcontrollers, peripherals, and real-time system concepts.</p>
+                    <a href="https://www.youtube.com/playlist?list=PLWPirh4EWFpE38Y7QDJ22OaT7A-dKUcmd" target="_blank"
+                        class="favorite-btn">
+                        View Playlist <i class="fas fa-play-circle"></i>
+                    </a>
+                </div>
+
+                <!-- Linux Drivers -->
+                <div class="favorite-card">
+                    <div class="favorite-header">
+                        <div class="favorite-icon"><i class="fab fa-linux"></i></div>
+                        <div class="favorite-meta">
+                            <div class="favorite-university">Kernel Dev</div>
+                            <div class="favorite-professor">FreeCodeCamp</div>
+                        </div>
                     </div>
-                    <div class="resource-links" style="margin-top: 15px;">
-                        <a href="https://www.udemy.com/course/mastering-rtos-hands-on-with-freertos-arduino-and-stm32fx/"
-                            target="_blank"
-                            style="color: var(--accent); text-decoration: none; display: block; margin-bottom: 5px;"><i
-                                class="fas fa-video"></i> Mastering RTOS (Udemy)</a>
-                        <a href="https://www.amazon.com/Hands-RTOS-Microcontrollers-real-time-FreeRTOS/dp/1838647080"
-                            target="_blank" style="color: var(--accent); text-decoration: none; display: block;"><i
-                                class="fas fa-book"></i> Hands-On RTOS (Book)</a>
+                    <h3>Linux Device Drivers</h3>
+                    <p>Kernel modules, character drivers, and hardware interfacing in Linux.</p>
+                    <a href="https://www.youtube.com/watch?v=iSiyDHobXHA" target="_blank" class="favorite-btn">
+                        Watch Course <i class="fas fa-play-circle"></i>
+                    </a>
+                </div>
+
+                <!-- CUDA -->
+                <div class="favorite-card">
+                    <div class="favorite-header">
+                        <div class="favorite-icon"><i class="fas fa-memory"></i></div>
+                        <div class="favorite-meta">
+                            <div class="favorite-university">HPC</div>
+                            <div class="favorite-professor">FreeCodeCamp</div>
+                        </div>
+                    </div>
+                    <h3>CUDA Programming</h3>
+                    <p>High-Performance Computing with GPUs. Parallel programming models.</p>
+                    <a href="https://www.youtube.com/watch?v=86FAWCzIe_4" target="_blank" class="favorite-btn">
+                        Watch Course <i class="fas fa-play-circle"></i>
+                    </a>
+                </div>
+
+                <!-- STM32 -->
+                <div class="favorite-card">
+                    <div class="favorite-header">
+                        <div class="favorite-icon"><i class="fas fa-cogs"></i></div>
+                        <div class="favorite-meta">
+                            <div class="favorite-university">STM32</div>
+                            <div class="favorite-professor">Bare Metal</div>
+                        </div>
+                    </div>
+                    <h3>STM32 Programming</h3>
+                    <p>Full course for EE/CS students. Learn register-level programming.</p>
+                    <a href="https://www.youtube.com/watch?v=n3FcSppat68" target="_blank" class="favorite-btn">
+                        Watch Course <i class="fas fa-play-circle"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Reference Books -->
+            <h3 class="subsection-title"
+                style="margin: 40px 0 25px 0; color: var(--text); border-left: 4px solid var(--accent); padding-left: 15px;">
+                Reference Library</h3>
+            <div class="books-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+
+                <div class="book-card"
+                    style="background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border); display: flex; align-items: start; gap: 15px;">
+                    <div class="book-icon" style="font-size: 2rem; color: var(--gold);"><i class="fas fa-book-open"></i>
+                    </div>
+                    <div>
+                        <h4 style="margin: 0 0 5px 0; color: var(--text);">The Art of Electronics</h4>
+                        <p style="margin: 0; font-size: 0.9rem; color: var(--text-dim);">Horowitz & Hill</p>
+                        <span
+                            style="font-size: 0.8rem; background: var(--bg-secondary); padding: 2px 8px; border-radius: 4px; color: var(--text-muted); display: inline-block; margin-top: 5px;">Legendary
+                            Reference</span>
                     </div>
                 </div>
 
-                <!-- Advanced C++ -->
-                <div class="favorite-card">
-                    <div class="favorite-header">
-                        <div class="favorite-icon"><i class="fas fa-code"></i></div>
-                        <div class="favorite-meta">
-                            <div class="favorite-university">Modern C++</div>
-                            <div class="favorite-professor">Scott Meyers</div>
-                        </div>
+                <div class="book-card"
+                    style="background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border); display: flex; align-items: start; gap: 15px;">
+                    <div class="book-icon" style="font-size: 2rem; color: var(--accent);"><i class="fas fa-book"></i>
                     </div>
-                    <h3>Advanced C++ Concepts</h3>
-                    <p>Move beyond basics. Understand move semantics, smart pointers, and template metaprogramming.</p>
-                    <div class="favorite-topics">
-                        <span class="topic-tag">C++11/14/17</span>
-                        <span class="topic-tag">STL</span>
-                        <span class="topic-tag">Memory Model</span>
-                    </div>
-                    <div class="resource-links" style="margin-top: 15px;">
-                        <a href="https://www.aristeia.com/books.html" target="_blank"
-                            style="color: var(--accent); text-decoration: none; display: block; margin-bottom: 5px;"><i
-                                class="fas fa-book"></i> Effective Modern C++</a>
-                        <a href="https://isocpp.org/" target="_blank"
-                            style="color: var(--accent); text-decoration: none; display: block;"><i
-                                class="fas fa-globe"></i> ISO C++ FAQ</a>
+                    <div>
+                        <h4 style="margin: 0 0 5px 0; color: var(--text);">Microelectronic Circuits</h4>
+                        <p style="margin: 0; font-size: 0.9rem; color: var(--text-dim);">Sedra & Smith</p>
+                        <span
+                            style="font-size: 0.8rem; background: var(--bg-secondary); padding: 2px 8px; border-radius: 4px; color: var(--text-muted); display: inline-block; margin-top: 5px;">Analog
+                            Bible</span>
                     </div>
                 </div>
+
+                <div class="book-card"
+                    style="background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border); display: flex; align-items: start; gap: 15px;">
+                    <div class="book-icon" style="font-size: 2rem; color: var(--purple);"><i
+                            class="fas fa-microchip"></i></div>
+                    <div>
+                        <h4 style="margin: 0 0 5px 0; color: var(--text);">Digital Fundamentals</h4>
+                        <p style="margin: 0; font-size: 0.9rem; color: var(--text-dim);">Thomas L. Floyd</p>
+                        <span
+                            style="font-size: 0.8rem; background: var(--bg-secondary); padding: 2px 8px; border-radius: 4px; color: var(--text-muted); display: inline-block; margin-top: 5px;">Digital
+                            Logic</span>
+                    </div>
+                </div>
+
+                <div class="book-card"
+                    style="background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border); display: flex; align-items: start; gap: 15px;">
+                    <div class="book-icon" style="font-size: 2rem; color: #10b981;"><i class="fas fa-industry"></i>
+                    </div>
+                    <div>
+                        <h4 style="margin: 0 0 5px 0; color: var(--text);">Electric Machinery</h4>
+                        <p style="margin: 0; font-size: 0.9rem; color: var(--text-dim);">Fitzgerald & Umans</p>
+                        <span
+                            style="font-size: 0.8rem; background: var(--bg-secondary); padding: 2px 8px; border-radius: 4px; color: var(--text-muted); display: inline-block; margin-top: 5px;">Motors
+                            & Systems</span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -1990,6 +2170,12 @@ std::atomic<bool> thread_safe_flag(false);</code></pre>
             <div class="footer-section">
                 <h4>Silicon Vault</h4>
                 <p>Your comprehensive guide to hardware engineering mastery</p>
+                <div class="disclaimer-note"
+                    style="margin-top: 10px; font-size: 0.8rem; color: #ff6b6b; background: rgba(255, 107, 107, 0.1); padding: 8px; border-radius: 4px; border: 1px solid rgba(255, 107, 107, 0.2);">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Disclaimer:</strong> This project is made by
+                    <strong>Gowshik Ram</strong> and is <u>NOT</u> affiliated with any college, university, or official
+                    institution.
+                </div>
             </div>
             <div class="footer-section">
                 <h4>Quick Links</h4>

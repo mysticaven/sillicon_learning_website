@@ -15,6 +15,7 @@ class SiliconVault {
         this.setupPopup();
         this.updateAllProgress();
         this.setupSmoothScroll();
+        this.setupRoadmap();
     }
 
     // Accordion functionality
@@ -320,6 +321,26 @@ class SiliconVault {
                 }
             });
         }
+    }
+
+    // Roadmap Interaction
+    setupRoadmap() {
+        const cards = document.querySelectorAll('.phase-card.interactive');
+
+        cards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Prevent closing if clicking a link
+                if (e.target.tagName === 'A' || e.target.closest('a')) return;
+
+                // Close other cards
+                cards.forEach(c => {
+                    if (c !== card) c.classList.remove('active');
+                });
+
+                // Toggle current
+                card.classList.toggle('active');
+            });
+        });
     }
 }
 

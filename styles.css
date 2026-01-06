@@ -500,71 +500,113 @@ nav {
     color: var(--text-dim);
 }
 
-/* Roadmap Section */
+/* Roadmap Section - Timeline */
 .roadmap-section {
     margin-bottom: 80px;
+    padding: 0 20px;
 }
 
-.phase-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px 0;
+}
+
+.timeline-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background: var(--bg-secondary);
+    transform: translateX(-50%);
+    border-radius: 4px;
+}
+
+.timeline-item {
+    position: relative;
+    width: 45%;
+    margin-bottom: 40px;
+}
+
+.timeline-item.left {
+    margin-right: auto;
+    padding-right: 30px;
+}
+
+.timeline-item.right {
+    margin-left: auto;
+    padding-left: 30px;
+}
+
+.timeline-dot {
+    position: absolute;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    background: var(--card);
+    border: 4px solid var(--accent);
+    border-radius: 50%;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.timeline-item.left .timeline-dot {
+    right: -42px;
+    /* Adjust based on padding/margins */
+}
+
+.timeline-item.right .timeline-dot {
+    left: -42px;
+}
+
+.timeline-item:hover .timeline-dot {
+    background: var(--accent);
+    box-shadow: 0 0 15px var(--glow);
+    transform: scale(1.2);
 }
 
 .phase-card {
     background: var(--card);
-    padding: 35px;
+    padding: 25px;
     border-radius: 16px;
     border: 1px solid var(--border);
-    transition: all 0.4s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 }
 
-.phase-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent) 0%, var(--purple) 100%);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
-}
-
-.phase-card:hover::before {
-    transform: scaleX(1);
-}
-
-.phase-card:hover {
-    transform: translateY(-8px);
+.phase-card.interactive:hover {
+    transform: translateY(-5px);
     border-color: var(--accent);
-    box-shadow: 0 20px 60px var(--shadow-lg), 0 0 40px var(--glow);
+    box-shadow: 0 10px 30px var(--shadow);
 }
 
-.phase-card.gold {
-    border-color: var(--gold);
+.phase-card.active {
+    transform: scale(1.02);
+    border-color: var(--accent);
+    box-shadow: 0 15px 40px var(--shadow-lg);
+    z-index: 10;
 }
 
-.phase-card.gold::before {
-    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-dark) 100%);
-}
-
-.phase-card.gold:hover {
-    border-color: var(--gold);
-    box-shadow: 0 20px 60px var(--shadow-lg), 0 0 40px rgba(245, 158, 11, 0.15);
+.phase-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
 }
 
 .phase-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--bg-secondary);
+    line-height: 1;
     position: absolute;
     top: 20px;
     right: 20px;
-    font-size: 4rem;
-    font-weight: 800;
-    color: rgba(255, 255, 255, 0.03);
-    line-height: 1;
+    opacity: 0.3;
 }
 
 .phase-tag {
@@ -574,29 +616,62 @@ nav {
     color: var(--accent);
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 15px;
-    padding: 6px 12px;
+    margin-bottom: 8px;
+    padding: 4px 10px;
     background: rgba(59, 130, 246, 0.1);
     border-radius: 6px;
 }
 
-.phase-card.gold .phase-tag {
-    color: var(--gold);
-    background: rgba(245, 158, 11, 0.1);
-}
-
 .phase-card h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 700;
-    margin-bottom: 12px;
+    margin: 5px 0 10px;
     color: var(--text);
+    padding-right: 40px;
+    /* Space for number */
 }
 
-.phase-card p {
-    font-size: 0.95rem;
+.expand-icon {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
     color: var(--text-dim);
-    margin-bottom: 20px;
-    line-height: 1.7;
+    transition: transform 0.3s ease;
+}
+
+.phase-card.active .expand-icon {
+    transform: rotate(180deg);
+    color: var(--accent);
+}
+
+.phase-preview p {
+    color: var(--text-dim);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.phase-details {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.4s ease;
+    border-top: 1px solid var(--border);
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.phase-card.active .phase-details {
+    max-height: 500px;
+    /* Arbitrary large height */
+    opacity: 1;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.phase-details p {
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 .phase-topics {
@@ -606,45 +681,77 @@ nav {
     margin-bottom: 20px;
 }
 
-.topic-tag {
-    font-size: 0.75rem;
-    padding: 4px 10px;
+.phase-resources h5 {
+    margin-bottom: 10px;
+    color: var(--text);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.video-btn.secondary {
+    margin-top: 8px;
+    background: transparent;
+    border-color: var(--text-dim);
+    color: var(--text-dim);
+}
+
+.video-btn.secondary:hover {
+    border-color: var(--text);
+    color: var(--text);
     background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    color: var(--text-muted);
 }
 
-.video-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    padding: 12px 20px;
-    background: rgba(59, 130, 246, 0.1);
-    border: 1px solid var(--accent);
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-.video-btn:hover {
-    background: var(--accent);
-    color: white;
-    transform: translateX(5px);
-}
-
-.phase-card.gold .video-btn {
-    color: var(--gold);
+/* Gold Theme Override */
+.phase-card.gold {
     border-color: var(--gold);
+}
+
+.phase-card.gold .phase-tag {
+    color: var(--gold);
     background: rgba(245, 158, 11, 0.1);
 }
 
-.phase-card.gold .video-btn:hover {
+.phase-card.interactive.gold:hover {
+    border-color: var(--gold);
+}
+
+.timeline-item:has(.gold) .timeline-dot {
+    border-color: var(--gold);
+}
+
+.timeline-item:has(.gold):hover .timeline-dot {
     background: var(--gold);
-    color: white;
+}
+
+/* Responsive Timeline */
+@media (max-width: 768px) {
+    .timeline-line {
+        left: 20px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 0 !important;
+    }
+
+    .timeline-item.left,
+    .timeline-item.right {
+        margin-left: 0;
+    }
+
+    .timeline-dot {
+        left: 10px !important;
+        right: auto !important;
+    }
+
+    .timeline-item.left .timeline-dot,
+    .timeline-item.right .timeline-dot {
+        left: 11px !important;
+    }
+
+    /* Center over line */
 }
 
 /* Favorites Section */
