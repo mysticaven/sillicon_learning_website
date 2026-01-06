@@ -1,0 +1,119 @@
+🚀 SILICON VAULT - QUICK START GUIDE
+=====================================
+
+📍 Location: C:\Users\gowsh\.gemini\antigravity\scratch\silicon-vault
+
+🌐 HOW TO OPEN THE WEBSITE
+---------------------------
+
+Option 1: Double-click
+   → Navigate to the folder above
+   → Double-click "index.html"
+   → Opens in your default browser
+
+Option 2: Right-click
+   → Right-click "index.html"
+   → Select "Open with" → Choose your browser
+   → Recommended: Chrome, Edge, or Firefox
+
+Option 3: Drag & Drop
+   → Drag "index.html" into an open browser window
+
+⚡ FEATURES AT A GLANCE
+-----------------------
+
+✅ 100+ Interview Questions
+   - Digital Logic & RTL (5 questions)
+   - Computer Architecture (3 questions)
+   - Python & Scripting (2 questions)
+   - Bit Manipulation (3 questions)
+
+✅ Progress Tracking
+   - Check off questions as you complete them
+   - Visual progress dashboard
+   - Automatically saved in your browser
+
+✅ Smart Search
+   - Press Ctrl+K (or Cmd+K on Mac) to search
+   - Find questions by topic, keyword, or tag
+   - Press Escape to clear search
+
+✅ 4-Phase Learning Roadmap
+   - Links to MIT, Berkeley, and Onur Mutlu courses
+   - Structured learning path
+   - Topic tags for each phase
+
+🎯 RECOMMENDED WORKFLOW
+-----------------------
+
+1. START HERE: Review the 4-Phase Roadmap
+   → Understand the learning path
+   → Click on course links to access videos
+
+2. TRACK PROGRESS: Check the Progress Dashboard
+   → See your overall completion percentage
+   → Monitor category-wise progress
+
+3. PRACTICE: Work through Question Bank
+   → Click questions to expand answers
+   → Read detailed explanations
+   → Check off completed questions
+
+4. SEARCH: Use Smart Search
+   → Find specific topics quickly
+   → Filter by keywords
+
+⌨️ KEYBOARD SHORTCUTS
+---------------------
+
+Ctrl/Cmd + K  →  Focus search bar
+Escape        →  Clear search
+Click         →  Expand/collapse questions
+
+🎨 DESIGN HIGHLIGHTS
+--------------------
+
+✨ Modern dark theme
+✨ Smooth animations
+✨ Responsive design (works on mobile!)
+✨ Progress persistence (saved automatically)
+✨ Premium gradients and effects
+
+📚 STUDY TIPS
+-------------
+
+1. Follow the phases in order (1 → 2 → 3 → 4)
+2. Watch the recommended course videos
+3. Practice all questions in each category
+4. Mark questions complete as you master them
+5. Use search to review specific topics
+
+🎓 COURSE LINKS INCLUDED
+-------------------------
+
+✓ MIT 6.002 - Circuits and Electronics
+✓ Onur Mutlu - Computer Architecture (Gold Standard!)
+✓ MIT 6.006 - Introduction to Algorithms
+✓ Berkeley EECS 151 - Digital Design & ICs
+
+💾 YOUR PROGRESS IS SAVED
+--------------------------
+
+Your progress is automatically saved in your browser's localStorage.
+It will persist even if you close the browser!
+
+To reset progress: Click "Reset Progress" button in the dashboard.
+
+🎉 GOOD LUCK, GOWSHIK!
+----------------------
+
+Good luck with the SRM IST-Kattankulathur 2025 Placement Season!
+
+You've got this! 🚀⚡
+
+---
+
+Need help? All features are intuitive and self-explanatory.
+Just explore and enjoy learning!
+
+Built with ❤️ for hardware engineers everywhere.

@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silicon Vault | Hardware Engineering Mastery</title>
+    <meta name="description"
+        content="Comprehensive master-list for Digital Design, Computer Architecture, and Firmware Engineering. Your complete guide to Google & Apple hardware interview prep.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-microchip"></i>
+                <span>SILICON VAULT</span>
+            </div>
+            <div class="nav-links">
+                <a href="#roadmap"><i class="fas fa-map-signs"></i> Roadmap</a>
+                <a href="#favorites"><i class="fas fa-star"></i> Favorites</a>
+                <a href="#logic"><i class="fas fa-bolt"></i> Logic</a>
+                <a href="#arch"><i class="fas fa-server"></i> Architecture</a>
+                <a href="#coding"><i class="fas fa-code"></i> Coding</a>
+                <a href="#progress"><i class="fas fa-chart-line"></i> Progress</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-star"></i>
+                <span>Hardware Engineering Excellence</span>
+            </div>
+            <h1>The Hardware Engineer's Bible</h1>
+            <p>A comprehensive master-list for Digital Design, Computer Architecture, and Firmware Engineering. Master
+                the skills needed for Google, Apple, and top-tier hardware roles.</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Interview Questions</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Learning Phases</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Career Growth</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="floating-chip chip-1"><i class="fas fa-microchip"></i></div>
+            <div class="floating-chip chip-2"><i class="fas fa-memory"></i></div>
+            <div class="floating-chip chip-3"><i class="fas fa-server"></i></div>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <!-- Progress Dashboard -->
+        <section id="progress" class="progress-section">
+            <div class="section-header">
+                <h2><i class="fas fa-chart-line"></i> Your Learning Progress</h2>
+                <button class="btn-reset" id="resetProgress">
+                    <i class="fas fa-redo"></i> Reset Progress
+                </button>
+            </div>
+            <div class="progress-dashboard">
+                <div class="overall-progress">
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" class="progress-bg"></circle>
+                            <circle cx="50" cy="50" r="45" class="progress-bar" id="overallProgressCircle"></circle>
+                        </svg>
+                        <div class="progress-text">
+                            <span class="progress-percentage" id="overallPercentage">0%</span>
+                            <span class="progress-label">Complete</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="category-progress">
+                    <div class="category-stat">
+                        <div class="category-icon logic"><i class="fas fa-bolt"></i></div>
+                        <div class="category-info">
+                            <div class="category-name">Digital Logic & RTL</div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="logicProgress"></div>
+                            </div>
+                            <div class="category-count" id="logicCount">0/5</div>
+                        </div>
+                    </div>
+                    <div class="category-stat">
+                        <div class="category-icon arch"><i class="fas fa-server"></i></div>
+                        <div class="category-info">
+                            <div class="category-name">Computer Architecture</div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="archProgress"></div>
+                            </div>
+                            <div class="category-count" id="archCount">0/3</div>
+                        </div>
+                    </div>
+                    <div class="category-stat">
+                        <div class="category-icon python"><i class="fab fa-python"></i></div>
+                        <div class="category-info">
+                            <div class="category-name">Python & Scripting</div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="pythonProgress"></div>
+                            </div>
+                            <div class="category-count" id="pythonCount">0/2</div>
+                        </div>
+                    </div>
+                    <div class="category-stat">
+                        <div class="category-icon programming"><i class="fas fa-code"></i></div>
+                        <div class="category-info">
+                            <div class="category-name">Bit Manipulation</div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="programmingProgress"></div>
+                            </div>
+                            <div class="category-count" id="programmingCount">0/3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap -->
+        <section id="roadmap" class="roadmap-section">
+            <div class="section-header">
+                <h2><i class="fas fa-map-signs"></i> 4-Phase Learning Roadmap</h2>
+                <p class="section-subtitle">Follow this structured path to hardware engineering mastery</p>
+            </div>
+            <div class="phase-grid">
+                <div class="phase-card" data-phase="1">
+                    <div class="phase-number">01</div>
+                    <span class="phase-tag">Foundation</span>
+                    <h3>Circuits & Logic</h3>
+                    <p>Master MOSFETs, Lumped Element Models, and parasitic signals. Build a solid foundation in analog
+                        and digital circuits.</p>
+                    <div class="phase-topics">
+                        <span class="topic-tag">MOSFETs</span>
+                        <span class="topic-tag">Parasitic Signals</span>
+                        <span class="topic-tag">Circuit Analysis</span>
+                    </div>
+                    <a href="https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/" target="_blank"
+                        class="video-btn">
+                        <i class="fab fa-youtube"></i> MIT 6.002
+                    </a>
+                </div>
+                <div class="phase-card" data-phase="2">
+                    <div class="phase-number">02</div>
+                    <span class="phase-tag">Core Knowledge</span>
+                    <h3>Computer Architecture</h3>
+                    <p>The "Gold Standard" course by Professor Onur Mutlu. Deep dive into CPU design, memory
+                        hierarchies, and performance optimization.</p>
+                    <div class="phase-topics">
+                        <span class="topic-tag">Pipeline Design</span>
+                        <span class="topic-tag">Cache Coherence</span>
+                        <span class="topic-tag">Memory Systems</span>
+                    </div>
+                    <a href="https://www.youtube.com/playlist?list=PL5Q2soXY2Zi9Eo29LMgKVcaydS7V1zZW3" target="_blank"
+                        class="video-btn">
+                        <i class="fab fa-youtube"></i> Mutlu Playlist
+                    </a>
+                </div>
+                <div class="phase-card gold" data-phase="3">
+                    <div class="phase-number">03</div>
+                    <span class="phase-tag">Algorithm Mastery</span>
+                    <h3>DSA & C++</h3>
+                    <p>Memory management, pointers, and algorithmic efficiency. Essential for firmware and embedded
+                        systems development.</p>
+                    <div class="phase-topics">
+                        <span class="topic-tag">Pointers</span>
+                        <span class="topic-tag">Big O Notation</span>
+                        <span class="topic-tag">Data Structures</span>
+                    </div>
+                    <a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/" target="_blank"
+                        class="video-btn">
+                        <i class="fas fa-code"></i> MIT 6.006
+                    </a>
+                </div>
+                <div class="phase-card" data-phase="4">
+                    <div class="phase-number">04</div>
+                    <span class="phase-tag">Advanced</span>
+                    <h3>ASIC/SoC Design</h3>
+                    <p>Digital Design & ICs. Understanding Area, Power, and Timing (APT) trade-offs in modern chip
+                        design.</p>
+                    <div class="phase-topics">
+                        <span class="topic-tag">RTL Design</span>
+                        <span class="topic-tag">Timing Analysis</span>
+                        <span class="topic-tag">Power Optimization</span>
+                    </div>
+                    <a href="https://www.youtube.com/playlist?list=PLm2S_eJatpSPh_A_U-VatpSno2XFf9u_6" target="_blank"
+                        class="video-btn">
+                        <i class="fas fa-bolt"></i> Berkeley EECS 151
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Your Favorites - Caltech -->
+        <section id="favorites" class="favorites-section">
+            <div class="section-header">
+                <h2><i class="fas fa-star"></i> Your Favorites - Caltech Masterclasses</h2>
+                <p class="section-subtitle">Professor Ali Hajimiri's legendary courses from Caltech</p>
+            </div>
+            <div class="favorites-grid">
+                <div class="favorite-card caltech">
+                    <div class="favorite-badge">
+                        <i class="fas fa-heart"></i>
+                        <span>Favorite</span>
+                    </div>
+                    <div class="favorite-header">
+                        <div class="favorite-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <div class="favorite-meta">
+                            <div class="favorite-university">Caltech</div>
+                            <div class="favorite-professor">Prof. Ali Hajimiri</div>
+                        </div>
+                    </div>
+                    <h3>Introductory Circuits and Systems</h3>
+                    <p>Master circuit theorems, source transformation, substitution theorem, maximum power transfer, and
+                        Y-Delta transformations. Essential foundation for analog design.</p>
+                    <div class="favorite-topics">
+                        <span class="topic-tag">Circuit Theorems</span>
+                        <span class="topic-tag">Source Transformation</span>
+                        <span class="topic-tag">Power Transfer</span>
+                        <span class="topic-tag">Y-Delta</span>
+                    </div>
+                    <div class="favorite-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-video"></i>
+                            <span>Full Playlist</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Comprehensive</span>
+                        </div>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=Ho0thejpuoY&list=PLc7Gz02Znph_HU1I9STgC4Nv0aG_jdb8Z&index=9"
+                        target="_blank" class="favorite-btn">
+                        <i class="fab fa-youtube"></i> Watch Playlist
+                    </a>
+                </div>
+                <div class="favorite-card caltech">
+                    <div class="favorite-badge">
+                        <i class="fas fa-heart"></i>
+                        <span>Favorite</span>
+                    </div>
+                    <div class="favorite-header">
+                        <div class="favorite-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="favorite-meta">
+                            <div class="favorite-university">Caltech</div>
+                            <div class="favorite-professor">Prof. Ali Hajimiri</div>
+                        </div>
+                    </div>
+                    <h3>Analog Circuit Design (2019)</h3>
+                    <p>Deep dive into solid-state physics, energy bands, electrons and holes. The latest 2019 edition
+                        covering modern analog design principles and semiconductor physics.</p>
+                    <div class="favorite-topics">
+                        <span class="topic-tag">Solid-State Physics</span>
+                        <span class="topic-tag">Energy Bands</span>
+                        <span class="topic-tag">Semiconductor Theory</span>
+                        <span class="topic-tag">Analog Design</span>
+                    </div>
+                    <div class="favorite-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-video"></i>
+                            <span>Full Playlist</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>2019 Edition</span>
+                        </div>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=403CnTftB4M&list=PLc7Gz02Znph-c2-ssFpRrzYwbzplXfXUT"
+                        target="_blank" class="favorite-btn">
+                        <i class="fab fa-youtube"></i> Watch Playlist
+                    </a>
+                </div>
+            </div>
+            <div class="favorites-note">
+                <i class="fas fa-info-circle"></i>
+                <p><strong>Why these courses?</strong> Professor Ali Hajimiri is renowned for making complex circuit
+                    concepts intuitive and accessible. These Caltech courses are considered among the best resources for
+                    understanding analog circuits and semiconductor physics at a deep level.</p>
+            </div>
+        </section>
+
+        <!-- Search Bar -->
+        <div class="search-wrapper">
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-bar" id="searchBox"
+                    placeholder="Search 100+ questions (e.g. 'MESI', 'FIFO', 'Clock')...">
+                <div class="search-count" id="searchCount"></div>
+            </div>
+        </div>
+
+        <!-- Question Bank -->
+        <section class="questions-section">
+
+            <div class="category-group" id="logic" data-category="logic">
+                <div class="category-header">
+                    <div class="category-title">
+                        <i class="fas fa-bolt"></i>
+                        <h3>I. Digital Logic & RTL</h3>
+                    </div>
+                    <div class="category-badge">5 Questions</div>
+                </div>
+
+                <div class="accordion-item" data-id="q1">
+                    <button class="accordion-btn">
+                        <div class="question-content">
+                            <span class="question-number">1</span>
+                            <span class="question-text">Design a 4:1 MUX using only 2:1 MUXes</span>
+                            <div class="question-tags">
+                                <span class="tag">Combinational Logic</span>
+                                <span class="tag">MUX Design</span>
+                            </div>
+                        </div>
+                        <div class="accordion-controls">
+                            <label class="checkbox-container" onclick="event.stopPropagation()">
+                                <input type="checkbox" class="question-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <h4>Solution:</h4>
+                            <p>Use two 2:1 MUXes for the first stage (controlled by S0) and one 2:1 MUX for the second
+                                stage (controlled by S1).</p>
+                            <div class="solution-diagram">
+                                <pre>
+        I0 ──┐
+             ├─── MUX1 ──┐
+        I1 ──┘           │
+             S0          ├─── MUX3 ─── Output
+        I2 ──┐           │      S1
+             ├─── MUX2 ──┘
+        I3 ──┘
+             S0
+                            </pre>
+                            </div>
+                            <div class="key-insight">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Key Insight:</strong> This hierarchical approach can be extended to build larger
+                                MUXes (8:1, 16:1) using the same principle.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" data-id="q3">
+                    <button class="accordion-btn">
+                        <div class="question-content">
+                            <span class="question-number">3</span>
+                            <span class="question-text">Blocking (=) vs Non-Blocking (<=) in Verilog</span>
+                                    <div class="question-tags">
+                                        <span class="tag">Verilog</span>
+                                        <span class="tag">RTL Coding</span>
+                                    </div>
+                        </div>
+                        <div class="accordion-controls">
+                            <label class="checkbox-container" onclick="event.stopPropagation()">
+                                <input type="checkbox" class="question-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <h4>Explanation:</h4>
+                            <div class="comparison-table">
+                                <div class="comparison-row">
+                                    <div class="comparison-cell">
+                                        <strong>Blocking (=)</strong>
+                                        <ul>
+                                            <li>Evaluated sequentially</li>
+                                            <li>Use for combinational logic</li>
+                                            <li>Executes in order written</li>
+                                        </ul>
+                                    </div>
+                                    <div class="comparison-cell">
+                                        <strong>Non-blocking (<=)< /strong>
+                                                <ul>
+                                                    <li>Evaluated in parallel</li>
+                                                    <li>Use for sequential logic</li>
+                                                    <li>All assignments happen simultaneously</li>
+                                                </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="code-example">
+                                <pre><code>// Combinational Logic
+always @(*) begin
+    y = a & b;  // Blocking
+end
+
+// Sequential Logic
+always @(posedge clk) begin
+    q <= d;  // Non-blocking
+end</code></pre>
+                            </div>
+                            <div class="key-insight warning">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <strong>Warning:</strong> Mixing blocking and non-blocking in the same always block can
+                                lead to race conditions and simulation/synthesis mismatches!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" data-id="q5">
+                    <button class="accordion-btn">
+                        <div class="question-content">
+                            <span class="question-number">5</span>
+                            <span class="question-text">Metastability & MTBF</span>
+                            <div class="question-tags">
+                                <span class="tag">Timing</span>
+                                <span class="tag">Clock Domain Crossing</span>
+                            </div>
+                        </div>
+                        <div class="accordion-controls">
+                            <label class="checkbox-container" onclick="event.stopPropagation()">
+                                <input type="checkbox" class="question-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <h4>Definition:</h4>
+                            <p>A state where a flip-flop output hovers between logic 0 and 1, unable to settle to a
+                                valid logic level within the required time.</p>
+                            <h4>MTBF (Mean Time Between Failures):</h4>
+                            <p>Statistical measure of how often metastability failures occur. Formula:</p>
+                            <div class="formula">
+                                MTBF = e^(t_r/τ) / (f_c × f_d × T_0)
+                            </div>
+                            <p>Where: t_r = resolution time, τ = time constant, f_c = clock frequency, f_d = data
+                                frequency</p>
+                            <h4>Mitigation Strategies:</h4>
+                            <ul>
+                                <li>Use multi-stage synchronizers (2-FF or 3-FF)</li>
+                                <li>Increase resolution time</li>
+                                <li>Use handshaking protocols for CDC</li>
+                                <li>Employ Gray code for multi-bit signals</li>
+                            </ul>
+                            <div class="key-insight">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Key Insight:</strong> Metastability cannot be eliminated, only reduced to
+                                acceptable levels. Always use proper synchronizers for clock domain crossings!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" data-id="q9">
+                    <button class="accordion-btn">
+                        <div class="question-content">
+                            <span class="question-number">9</span>
+                            <span class="question-text">Asynchronous FIFO Full/Empty Logic</span>
+                            <div class="question-tags">
+                                <span class="tag">FIFO Design</span>
+                                <span class="tag">Gray Code</span>
+                            </div>
+                        </div>
+                        <div class="accordion-controls">
+                            <label class="checkbox-container" onclick="event.stopPropagation()">
+                                <input type="checkbox" class="question-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <h4>Gray Code Approach:</h4>
+                            <p>Compare Read/Write pointers in Gray code to avoid metastability issues when crossing
+                                clock domains.</p>
+                            <div class="fifo-logic">
+                                <div class="logic-section">
+                                    <strong>Full Condition:</strong>
+                                    <ul>
+                                        <li>MSB differs (write pointer wrapped once more)</li>
+                                        <li>2nd MSB differs</li>
+                                        <li>All other bits match</li>
+                                    </ul>
+                                </div>
+                                <div class="logic-section">
+                                    <strong>Empty Condition:</strong>
+                                    <ul>
+                                        <li>All bits of read and write pointers match</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="code-example">
+                                <pre><code>// Gray Code Conversion
+gray = binary ^ (binary >> 1);
+
+// Full Logic
+full = (wptr_gray[N:N-1] != rptr_gray_sync[N:N-1]) && 
+       (wptr_gray[N-2:0] == rptr_gray_sync[N-2:0]);
+
+// Empty Logic
+empty = (wptr_gray_sync == rptr_gray);</code></pre>
+                            </div>
+                            <div class="key-insight">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Why Gray Code?</strong> Only one bit changes at a time, minimizing metastability
+                                risk during clock domain crossing.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" data-id="q12">
+                    <button class="accordion-btn">
+                        <div class="question-content">
+                            <span class="question-number">12</span>
+                            <span class="question-text">Setup vs Hold Violation Fixes</span>
+                            <div class="question-tags">
+                                <span class="tag">Timing Closure</span>
+                                <span class="tag">STA</span>
+                            </div>
+                        </div>
+                        <div class="accordion-controls">
+                            <label class="checkbox-container" onclick="event.stopPropagation()">
+                                <input type="checkbox" class="question-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <h4>Setup Violation Fixes:</h4>
+                            <ul>
+                                <li><strong>Reduce clock frequency</strong> - Increases clock period</li>
+                                <li><strong>Optimize combinational logic</strong> - Reduce delay in data path</li>
+                                <li><strong>Increase voltage</strong> - Speeds up transistor switching</li>
+                                <li><strong>Resize gates</strong> - Use faster cells in critical path</li>
+                                <li><strong>Pipeline the design</strong> - Break long paths into stages</li>
+                            </ul>
+                            <h4>Hold Violation Fixes:</h4>
+                            <ul>
+                                <li><strong>Add delay buffers</strong> - Increase data path delay</li>
+                                <li><strong>Increase clock skew</strong> - Delay clock to capturing flop</li>
+                                <li><strong>Resize gates</strong> - Use slower cells in data path</li>
+                            </ul>
+                            <div class="key-insight warning">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <strong>Critical Difference:</strong> Hold violations are frequency independent! They
+                                occur regardless of clock speed and must be fixed with delay insertion.
+                            </div>
+                            <div class="timing-diagram">
+                                <pre>
+Setup Time:     Hold Time:
+    ___             ___
+CLK    |___|    CLK    |___
+       ↑               ↑
+    [Setup]        [Hold]
+Data must be    Data must be
+stable BEFORE   stable AFTER
+                            </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-group" id="arch" data-category="arch">
+                <div class="category-header">
+                    <div class="category-title">
+                        <i class="fas fa-server"></i>
+                        <h3>II. Computer Architecture & SoC</h3>
+                    </div>
+                    <div class="category-badge">3 Questions</div>
+                </div>
+
+                <div class="accordion-item" data-id="q31">
+                    <button class="accordion-btn">
+                        <div class="question-content">
+                            <span class="question-number">31</span>
+                            <span class="question-text">5 Stages of RISC Pipeline</span>
+                            <div class="question-tags">
+                                <span class="tag">CPU Design</span>
+                                <span class="tag">Pipelining</span>
+                            </div>
+                        </div>
+                        <div class="accordion-controls">
+                            <label class="checkbox-container" onclick="event.stopPropagation()">
+                                <input type="checkbox" class="question-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <h4>Classic 5-Stage RISC Pipeline:</h4>
+                            <div class="pipeline-stages">
+                                <div class="stage">
+                                    <div class="stage-number">1</div>
+                                    <strong>IF - Instruction Fetch</strong>
+                                    <p>Fetch instruction from memory using PC (Program Counter)</p>
+                                </div>
+                                <div class="stage">
+                                    <div class="stage-number">2</div>
+                                    <strong>ID - Instruction Decode</strong>
+                                    <p>Decode instruction and read register operands</p>
+                                </div>
+                                <div class="stage">
+                                    <div class="stage-number">3</div>
+                                    <strong>EX - Execute</strong>
+                                    <p>Perform ALU operations or calculate memory address</p>
+                                </div>
+                                <div class="stage">
+                                    <div class="stage-number">4</div>
+                                    <strong>MEM - Memory Access</strong>
+                                    <p>Read from or write to data memory (for load/store)</p>
+                                </div>
+                                <div class="stage">
+                                    <div class="stage-number">5</div>
+                                    <strong>WB - Write Back</strong>
+                                    <p>Write result back to register file</p>
+                                </div>
+                            </div>
+                            <h4>Pipeline Hazards:</h4>
+                            <ul>
+                                <li><strong>Structural:</strong> Resource conflicts (e.g., single memory for I&D)</li>
+                                <li><strong>Data:</strong> RAW, WAR, WAW dependencies</li>
+                                <li><strong>Control:</strong> Branch instructions causing stalls</li>
+                            </ul>
+                            <div class="key-insight">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Performance:</strong> Ideal CPI = 1 (one instruction per cycle), but hazards
+                                increase actual CPI.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" data-id="q38">
+                    <button class="accordion-btn">
+                        <div class="question-content">
+                            <span class="question-number">38</span>
+                            <span class="question-text">MESI Cache Coherence Protocol</span>
+                            <div class="question-tags">
+                                <span class="tag">Cache Coherence</span>
+                                <span class="tag">Multi-core</span>
+                            </div>
+                        </div>
+                        <div class="accordion-controls">
+                            <label class="checkbox-container" onclick="event.stopPropagation()">
+                                <input type="checkbox" class="question-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <h4>MESI Protocol States:</h4>
+                            <div class="mesi-states">
+                                <div class="mesi-state modified">
+                                    <div class="state-icon">M</div>
+                                    <strong>Modified</strong>
+                                    <p>Dirty data, exclusive to this cache. Must write back to memory before eviction.
+                                    </p>
+                                </div>
+                                <div class="mesi-state exclusive">
+                                    <div class="state-icon">E</div>
+                                    <strong>Exclusive</strong>
+                                    <p>Clean data, exclusive to this cache. Matches memory, no other cache has it.</p>
+                                </div>
+                                <div class="mesi-state shared">
+                                    <div class="state-icon">S</div>
+                                    <strong>Shared</strong>
+                                    <p>Clean data, shared by multiple caches. Read-only effectively.</p>
+                                </div>
+                                <div class="mesi-state invalid">
+                                    <div class="state-icon">I</div>
+                                    <strong>Invalid</strong>
+                                    <p>Data is not usable. Must fetch from memory or another cache.</p>
+                                </div>
+                            </div>
+                            <h4>State Transitions:</h4>
+                            <ul>
+                                <li><strong>Read Miss:</strong> I → E (if no other cache has it) or I → S (if shared)
+                                </li>
+                                <li><strong>Write Hit:</strong> E → M, S → M (invalidate other caches)</li>
+                                <li><strong>Write Miss:</strong> I → M (invalidate all other copies)</li>
+                                <li><strong>Snoop Read:</strong> M → S (write back to memory), E → S</li>
+                            </ul>
+                            <div class="key-insight">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Why MESI?</strong> Maintains cache coherence in multi-core systems while
+                                minimizing bus traffic and memory writes.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" data-id="q41">
+                    <button class="accordion-btn">
+                        <div class="question-content">
+                            <span class="question-number">41</span>
+                            <span class="question-text">DMA Transfer Flow</span>
+                            <div class="question-tags">
+                                <span class="tag">DMA</span>
+                                <span class="tag">I/O Systems</span>
+                            </div>
+                        </div>
+                        <div class="accordion-controls">
+                            <label class="checkbox-container" onclick="event.stopPropagation()">
+                                <input type="checkbox" class="question-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <h4>DMA Transfer Process:</h4>
+                            <div class="dma-flow">
+                                <div class="flow-step">
+                                    <div class="step-number">1</div>
+                                    <strong>CPU Initialization</strong>
+                                    <p>CPU programs DMA controller with:</p>
+                                    <ul>
+                                        <li>Source address</li>
+                                        <li>Destination address</li>
+                                        <li>Transfer size</li>
+                                        <li>Transfer direction</li>
+                                    </ul>
+                                </div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step">
+                                    <div class="step-number">2</div>
+                                    <strong>Bus Arbitration</strong>
+                                    <p>DMA controller requests and gains control of system bus</p>
+                                </div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step">
+                                    <div class="step-number">3</div>
+                                    <strong>Data Transfer</strong>
+                                    <p>DMA moves data directly between peripheral and memory (bypassing CPU)</p>
+                                </div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step">
+                                    <div class="step-number">4</div>
+                                    <strong>Completion Interrupt</strong>
+                                    <p>DMA releases bus and interrupts CPU to signal completion</p>
+                                </div>
+                            </div>
+                            <h4>Advantages:</h4>
+                            <ul>
+                                <li>Frees CPU for other tasks during I/O</li>
+                                <li>Higher throughput for bulk transfers</li>
+                                <li>Reduced CPU overhead</li>
+                            </ul>
+                            <h4>DMA Modes:</h4>
+                            <ul>
+                                <li><strong>Burst Mode:</strong> DMA takes bus until transfer complete</li>
+                                <li><strong>Cycle Stealing:</strong> DMA transfers one word at a time</li>
+                                <li><strong>Transparent Mode:</strong> DMA uses bus only when CPU doesn't need it</li>
+                            </ul>
+                            <div class="key-insight">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Use Case:</strong> Essential for high-speed peripherals like disk controllers,
+                                network cards, and GPUs.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-group" id="coding" data-category="python">
+                <div class="category-header">
+                    <div class="category-title">
+                        <i class="fab fa-python"></i>
+                        <h3>III. Python & Scripting for Hardware</h3>
+                    </div>
+                    <div class="category-badge">2 Questions</div>
+                </div>
+
+                <div class="accordion-item" data-id="q61">
+                    <button class="accordion-btn">
+                        <div class="question-content">
+                            <span class="question-number">61</span>
+                            <span class="question-text">Parse 1GB log for "ERROR" efficiently</span>
+                            <div class="question-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">Log Parsing</span>
+                            </div>
+                        </div>
+                        <div class="accordion-controls">
+                            <label class="checkbox-container" onclick="event.stopPropagation()">
+                                <input type="checkbox" class="question-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <h4>Efficient Solution:</h4>
+                            <div class="code-example">
+                                <pre><code>with open("log.txt", "r") as f:
+    for line in f:
+        if "ERROR" in line:
+            print(line.strip())</code></pre>
+                            </div>
+                            <h4>Why This Works:</h4>
+                            <ul>
+                                <li>Uses line-by-line iterator (doesn't load entire file into RAM)</li>
+                                <li>Memory usage: O(1) - only one line in memory at a time</li>
+                                <li>Time complexity: O(n) where n = number of lines</li>
+                            </ul>
+                            <h4>Advanced Optimization:</h4>
+                            <div class="code-example">
+                                <pre><code>import re
+import mmap
+
+# Memory-mapped file for even faster access
+with open("log.txt", "r+b") as f:
+    with mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ) as mmapped:
+        for line in iter(mmapped.readline, b""):
+            if b"ERROR" in line:
+                print(line.decode().strip())
+
+# Or use grep-like approach with regex
+pattern = re.compile(rb'.*ERROR.*')
+with open("log.txt", "rb") as f:
+    for match in pattern.finditer(f.read()):
+        print(match.group().decode())</code></pre>
+                            </div>
+                            <div class="key-insight">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Pro Tip:</strong> For multi-GB files, consider using shell tools like
+                                <code>grep</code> or <code>awk</code> which are optimized for text processing.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" data-id="q62">
+                    <button class="accordion-btn">
+                        <div class="question-content">
+                            <span class="question-number">62</span>
+                            <span class="question-text">Regex for Hex Addresses</span>
+                            <div class="question-tags">
+                                <span class="tag">Regex</span>
+                                <span class="tag">Python</span>
+                            </div>
+                        </div>
+                        <div class="accordion-controls">
+                            <label class="checkbox-container" onclick="event.stopPropagation()">
+                                <input type="checkbox" class="question-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <h4>Basic Pattern:</h4>
+                            <div class="code-example">
+                                <pre><code>import re
+
+text = "Address: 0x1A2B3C4D, Data: 0xDEADBEEF"
+addresses = re.findall(r'0x[0-9A-Fa-f]+', text)
+print(addresses)  # ['0x1A2B3C4D', '0xDEADBEEF']</code></pre>
+                            </div>
+                            <h4>Advanced Patterns:</h4>
+                            <div class="code-example">
+                                <pre><code># Match specific bit widths
+addr_32bit = re.findall(r'0x[0-9A-Fa-f]{8}', text)  # Exactly 32-bit
+addr_64bit = re.findall(r'0x[0-9A-Fa-f]{16}', text) # Exactly 64-bit
+
+# Match with optional underscores (Verilog style)
+verilog_hex = re.findall(r"0x[0-9A-Fa-f_]+", text)
+
+# Capture hex with optional bit width prefix
+full_pattern = re.findall(r"(\d+'h)?0x([0-9A-Fa-f]+)", text)
+
+# Match SystemVerilog hex literals
+sv_hex = re.findall(r"\d+'h[0-9A-Fa-f_]+", text)</code></pre>
+                            </div>
+                            <h4>Common Use Cases:</h4>
+                            <ul>
+                                <li>Parsing simulation logs for memory addresses</li>
+                                <li>Extracting register values from debug output</li>
+                                <li>Validating hex constants in RTL code</li>
+                                <li>Converting between number formats in scripts</li>
+                            </ul>
+                            <div class="key-insight">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Regex Breakdown:</strong> <code>0x</code> matches literal "0x",
+                                <code>[0-9A-Fa-f]</code> matches any hex digit, <code>+</code> means one or more.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-group" data-category="programming">
+                <div class="category-header">
+                    <div class="category-title">
+                        <i class="fas fa-code"></i>
+                        <h3>IV. Programming & Bit Manipulation</h3>
+                    </div>
+                    <div class="category-badge">3 Questions</div>
+                </div>
+
+                <div class="accordion-item" data-id="q81">
+                    <button class="accordion-btn">
+                        <div class="question-content">
+                            <span class="question-number">81</span>
+                            <span class="question-text">Count Set Bits (Brian Kernighan's Algorithm)</span>
+                            <div class="question-tags">
+                                <span class="tag">Bit Manipulation</span>
+                                <span class="tag">Algorithms</span>
+                            </div>
+                        </div>
+                        <div class="accordion-controls">
+                            <label class="checkbox-container" onclick="event.stopPropagation()">
+                                <input type="checkbox" class="question-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <h4>Algorithm:</h4>
+                            <div class="code-example">
+                                <pre><code>int countSetBits(int n) {
+    int count = 0;
+    while(n) { 
+        n &= (n - 1);  // Clear rightmost set bit
+        count++; 
+    }
+    return count;
+}</code></pre>
+                            </div>
+                            <h4>How It Works:</h4>
+                            <div class="bit-explanation">
+                                <p>Example: n = 12 (binary: 1100)</p>
+                                <pre>
+Iteration 1:  n = 1100, n-1 = 1011
+              n & (n-1) = 1000, count = 1
+
+Iteration 2:  n = 1000, n-1 = 0111
+              n & (n-1) = 0000, count = 2
+
+Result: 2 set bits
+                            </pre>
+                            </div>
+                            <h4>Time Complexity:</h4>
+                            <p><strong>O(k)</strong> where k = number of set bits (not O(log n)!)</p>
+                            <h4>Alternative Methods:</h4>
+                            <div class="code-example">
+                                <pre><code>// Lookup table method (fastest for repeated calls)
+int popcount_lookup[256];  // Pre-computed
+
+// Built-in compiler intrinsic
+int count = __builtin_popcount(n);  // GCC/Clang
+
+// SWAR (SIMD Within A Register) - parallel counting
+int count = n;
+count = (count & 0x55555555) + ((count >> 1) & 0x55555555);
+count = (count & 0x33333333) + ((count >> 2) & 0x33333333);
+count = (count & 0x0F0F0F0F) + ((count >> 4) & 0x0F0F0F0F);
+count = (count & 0x00FF00FF) + ((count >> 8) & 0x00FF00FF);
+count = (count & 0x0000FFFF) + ((count >> 16) & 0x0000FFFF);</code></pre>
+                            </div>
+                            <div class="key-insight">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Why It's Efficient:</strong> Only iterates once per set bit, not once per total
+                                bit. For sparse bitstreams, this is significantly faster!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" data-id="q84">
+                    <button class="accordion-btn">
+                        <div class="question-content">
+                            <span class="question-number">84</span>
+                            <span class="question-text">Check if Number is Power of 2</span>
+                            <div class="question-tags">
+                                <span class="tag">Bit Tricks</span>
+                                <span class="tag">C/C++</span>
+                            </div>
+                        </div>
+                        <div class="accordion-controls">
+                            <label class="checkbox-container" onclick="event.stopPropagation()">
+                                <input type="checkbox" class="question-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <h4>One-Liner Solution:</h4>
+                            <div class="code-example">
+                                <pre><code>bool isPowerOfTwo(int n) {
+    return (n > 0) && ((n & (n - 1)) == 0);
+}</code></pre>
+                            </div>
+                            <h4>Why This Works:</h4>
+                            <div class="bit-explanation">
+                                <p>Powers of 2 have exactly one bit set:</p>
+                                <pre>
+1   = 0001
+2   = 0010
+4   = 0100
+8   = 1000
+16  = 10000
+
+For power of 2:  n     = 1000
+                 n-1   = 0111
+                 n & (n-1) = 0000
+
+For non-power:   n     = 1010
+                 n-1   = 1001
+                 n & (n-1) = 1000 (non-zero!)
+                            </pre>
+                            </div>
+                            <h4>Related Bit Tricks:</h4>
+                            <div class="code-example">
+                                <pre><code>// Get next power of 2
+int nextPowerOf2(int n) {
+    n--;
+    n |= n >> 1;
+    n |= n >> 2;
+    n |= n >> 4;
+    n |= n >> 8;
+    n |= n >> 16;
+    return n + 1;
+}
+
+// Check if power of 4
+bool isPowerOfFour(int n) {
+    return (n > 0) && ((n & (n-1)) == 0) && ((n & 0xAAAAAAAA) == 0);
+}
+
+// Isolate rightmost set bit
+int isolateRightmost(int n) {
+    return n & (-n);
+}</code></pre>
+                            </div>
+                            <div class="key-insight">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Hardware Connection:</strong> This trick is used in cache size validation,
+                                memory alignment checks, and power-of-2 buffer sizing.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" data-id="q87">
+                    <button class="accordion-btn">
+                        <div class="question-content">
+                            <span class="question-number">87</span>
+                            <span class="question-text">The 'volatile' Keyword in C/C++</span>
+                            <div class="question-tags">
+                                <span class="tag">Embedded</span>
+                                <span class="tag">Firmware</span>
+                            </div>
+                        </div>
+                        <div class="accordion-controls">
+                            <label class="checkbox-container" onclick="event.stopPropagation()">
+                                <input type="checkbox" class="question-checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <h4>Definition:</h4>
+                            <p>Prevents the compiler from optimizing out repeated reads to a variable that might be
+                                changed by hardware outside the program flow.</p>
+                            <h4>When to Use:</h4>
+                            <ul>
+                                <li><strong>Memory-mapped I/O registers</strong> - Hardware can change values</li>
+                                <li><strong>Variables modified by ISRs</strong> - Interrupt handlers update them</li>
+                                <li><strong>Multi-threaded shared variables</strong> - Other threads modify them</li>
+                                <li><strong>Watchdog timers</strong> - Must be accessed regularly</li>
+                            </ul>
+                            <h4>Example Without volatile:</h4>
+                            <div class="code-example">
+                                <pre><code>// BAD: Compiler may optimize this to infinite loop
+int *status_reg = (int*)0x40000000;
+while (*status_reg == 0) {
+    // Compiler thinks: "status_reg never changes in this loop"
+    // May optimize to: if (*status_reg == 0) while(1);
+}</code></pre>
+                            </div>
+                            <h4>Example With volatile:</h4>
+                            <div class="code-example">
+                                <pre><code>// GOOD: Compiler always reads from memory
+volatile int *status_reg = (volatile int*)0x40000000;
+while (*status_reg == 0) {
+    // Compiler generates actual memory read each iteration
+}
+
+// Real-world example: UART status register
+#define UART_STATUS (*(volatile uint32_t*)0x40001000)
+#define TX_READY (1 << 5)
+
+void uart_send(char c) {
+    while (!(UART_STATUS & TX_READY)) {
+        // Wait for transmitter ready
+    }
+    UART_DATA = c;
+}</code></pre>
+                            </div>
+                            <h4>Common Misconceptions:</h4>
+                            <div class="warning-box">
+                                <p><strong>❌ volatile does NOT provide atomicity</strong></p>
+                                <p><strong>❌ volatile does NOT provide memory barriers</strong></p>
+                                <p><strong>❌ volatile is NOT a substitute for mutexes</strong></p>
+                                <p><strong>✅ volatile only prevents compiler optimization</strong></p>
+                            </div>
+                            <h4>Correct Multi-threaded Usage:</h4>
+                            <div class="code-example">
+                                <pre><code>// For ISR communication
+volatile bool data_ready = false;
+
+void ISR_handler() {
+    data_ready = true;  // Set by interrupt
+}
+
+void main_loop() {
+    while (!data_ready) {  // Must be volatile!
+        // Wait
+    }
+    process_data();
+}
+
+// For thread safety, use atomics instead
+#include <atomic>
+std::atomic<bool> thread_safe_flag(false);</code></pre>
+                            </div>
+                            <div class="key-insight">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>Interview Tip:</strong> Always mention that volatile prevents optimization but
+                                doesn't guarantee atomicity or thread safety!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Silicon Vault</h4>
+                <p>Your comprehensive guide to hardware engineering mastery</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#roadmap">Learning Roadmap</a>
+                <a href="#progress">Track Progress</a>
+                <a href="#logic">Question Bank</a>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <a href="https://ocw.mit.edu" target="_blank">MIT OpenCourseWare</a>
+                <a href="https://www.youtube.com/@OnurMutluLectures" target="_blank">Onur Mutlu Lectures</a>
+                <a href="https://inst.eecs.berkeley.edu/~eecs151" target="_blank">Berkeley EECS 151</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Good luck with the SRM IST-Kattankulathur 2025 Placement Season, Gowshik! 🚀</p>
+            <p>Built with ❤️ for hardware engineers everywhere</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
