@@ -1,5 +1,6 @@
 // Silicon Vault - Interactive Learning Platform
 // Progress tracking, search, and accordion functionality
+import { inject, track } from '@vercel/analytics';
 
 class SiliconVault {
     constructor() {
@@ -19,6 +20,9 @@ class SiliconVault {
             this.setupRoadmap();
             this.updatePlacementYear();
             this.setupVisitorStats();
+
+            // Initialize Vercel Analytics
+            inject();
         } catch (error) {
             console.error('Initialization error:', error);
         }
@@ -77,6 +81,12 @@ class SiliconVault {
                 }
             });
 
+            // Track search event if term is long enough (avoid tracking every keystroke)
+            if (term.length > 3) {
+                // Throttle this in a real scenario, but for now:
+                track('Search', { query: term });
+            }
+
             // Update search count
             if (term === '') {
                 searchCount.textContent = '';
@@ -127,6 +137,9 @@ class SiliconVault {
                 // Add celebration animation for completion
                 if (e.target.checked) {
                     this.celebrateCompletion(checkbox);
+                    track('Progress_Complete', { itemId: questionId });
+                } else {
+                    track('Progress_Incomplete', { itemId: questionId });
                 }
             });
         });
@@ -362,6 +375,7 @@ class SiliconVault {
                     card.classList.add('active');
                     if (details) details.style.maxHeight = details.scrollHeight + "px";
                     if (icon) icon.style.transform = "rotate(180deg)";
+                    track('Roadmap_Expand', { phase: card.dataset.phase });
                 }
             });
         });
@@ -461,6 +475,13 @@ class SiliconVault {
                         this.updateVisitorDisplay(data.totalVisitors);
                         this.updateCountriesDisplay(data.countries);
                         sessionStorage.setItem('lastVisitTimestamp', now.toString());
+
+                        // Sync with Vercel Analytics
+                        track('Visitor_Visit', {
+                            country,
+                            countryCode,
+                            source: 'backend'
+                        });
                         return;
                     }
                 } catch (functionError) {
@@ -526,6 +547,13 @@ class SiliconVault {
             const countResponse = await fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`);
             const countData = await countResponse.json();
             this.updateVisitorDisplay(countData.value);
+
+            // Track fallback in Vercel
+            track('Visitor_Visit_Fallback', {
+                country,
+                countryCode,
+                source: 'countapi'
+            });
         } catch (error) {
             console.error('CountAPI error:', error);
         }

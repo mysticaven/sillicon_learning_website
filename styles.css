@@ -284,7 +284,22 @@ nav {
 .visitor-divider {
     height: 1px;
     background: var(--border);
-    margin: 25px 0;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.vercel-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: var(--accent);
+    opacity: 0.8;
+}
+
+.vercel-status i {
+    font-size: 0.9rem;
 }
 
 .countries-section h4 {

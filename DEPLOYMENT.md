@@ -44,6 +44,13 @@ netlify deploy --prod
 
 Netlify Blobs is automatically available on all Netlify sites. No additional configuration needed!
 
+#### 4. **Enable Vercel Analytics (Optional but Recommended)**
+
+This project is now integrated with **Vercel Analytics**. 
+1. If deploying to Vercel, simply enable Analytics in the dashboard.
+2. If deploying elsewhere, the `inject()` and `track()` methods will still attempt to send data to Vercel if configured.
+3. Custom events like `Search`, `Progress_Complete`, and `Roadmap_Expand` are automatically tracked.
+
 ### 🔧 How Visitor Tracking Works
 
 The visitor tracking system uses a **multi-tier approach**:
