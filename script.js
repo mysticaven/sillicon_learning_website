@@ -454,7 +454,7 @@ class SiliconVault {
 
                 // Try to use backend functions
                 try {
-                    // Try Netlify path first, then Cloudflare path
+                    // Try Netlify path first, then Cloudflare path, then Vercel path
                     let response = await fetch('/.netlify/functions/track-visit', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -464,6 +464,15 @@ class SiliconVault {
                     // If Netlify fails, try Cloudflare path
                     if (!response.ok) {
                         response = await fetch('/track-visit', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ country, countryCode, flag })
+                        });
+                    }
+
+                    // If Cloudflare fails, try Vercel path
+                    if (!response.ok) {
+                        response = await fetch('/api/track-visit', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ country, countryCode, flag })
@@ -510,6 +519,10 @@ class SiliconVault {
 
             if (!response.ok) {
                 response = await fetch('/track-visit');
+            }
+
+            if (!response.ok) {
+                response = await fetch('/api/track-visit');
             }
 
             if (response.ok) {
