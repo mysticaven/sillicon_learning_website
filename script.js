@@ -438,19 +438,23 @@ class SiliconVault {
                 // Get flag emoji for the country
                 const flag = this.getCountryFlag(countryCode);
 
-                // Try to use Netlify Function first (for production)
+                // Try to use backend functions
                 try {
-                    const response = await fetch('/.netlify/functions/track-visit', {
+                    // Try Netlify path first, then Cloudflare path
+                    let response = await fetch('/.netlify/functions/track-visit', {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            country,
-                            countryCode,
-                            flag
-                        })
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ country, countryCode, flag })
                     });
+
+                    // If Netlify fails, try Cloudflare path
+                    if (!response.ok) {
+                        response = await fetch('/track-visit', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ country, countryCode, flag })
+                        });
+                    }
 
                     if (response.ok) {
                         const data = await response.json();
@@ -460,7 +464,7 @@ class SiliconVault {
                         return;
                     }
                 } catch (functionError) {
-                    console.log('Netlify function not available, using fallback...', functionError);
+                    console.log('Backend functions not available, using fallback...', functionError);
                 }
 
                 // Fallback to CountAPI if Netlify function is not available (local development)
@@ -480,8 +484,13 @@ class SiliconVault {
 
     async loadVisitorStats() {
         try {
-            // Try to load from Netlify Function
-            const response = await fetch('/.netlify/functions/track-visit');
+            // Try to load from backend functions
+            let response = await fetch('/.netlify/functions/track-visit');
+
+            if (!response.ok) {
+                response = await fetch('/track-visit');
+            }
+
             if (response.ok) {
                 const data = await response.json();
                 this.updateVisitorDisplay(data.totalVisitors);
